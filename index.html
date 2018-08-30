@@ -143,7 +143,7 @@
 					<em>博客</em>
 				</h1>
 				<p style="text-align: right;"><strong>
-					我，首先是个程序员；其次，才是个Java程序员；
+					我，首先是程序员；其次，才是Java程序员；
 					<br>
 					所以，我不仅仅使用Java来写程序；另外，谢谢你的到来；</strong>
 				</p>
@@ -154,7 +154,7 @@
 						<div class="image" >
 							<img src="blog/#tpl_image" alt="" style="height:260px">
 							<div class="featured-button button">
-								<a href="#projects">点击阅读</a>
+								<a href="article.html?#tpl_id">点我阅读</a>
 							</div>
 						</div>
 						<div class="text-content">
@@ -173,7 +173,7 @@
 					<em>项目</em>
 				</h1>
 				<p>
-					轮子，偶尔也是需要造几个的; <br>毕竟，代码也是有灵魂的，因为每个轮子都是一件艺术品
+					<strong>轮子，偶尔也是需要造几个的; <br>毕竟，代码也是有灵魂的，自然，轮子也有好坏之分；</strong>
 				</p>
 			</div>
 			<div class="section-content">
@@ -212,36 +212,32 @@
 					</div>
 				</div>
 			</div>
-			<div class="tlinks">
-				Collect from <a href="http://www.cssmoban.com/" title="网站模板">网站模板</a>
-			</div>
 		</section>
 		<section id="game" class="content-section">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="section-heading">
+					<div class="section-heading" style="text-align:center">
 						<h1>
-							This is a <em>company</em> presentation.
+							<em>Game？</em>&nbsp;&nbsp;&nbsp;&nbsp;嗯。是的，有时候我也写一些小游戏。 
 						</h1>
-						<p>Praesent pellentesque efficitur magna, sed pellentesque
-							neque malesuada vitae.</p>
 					</div>
 					<div class="text-content">
-						<p>In eget ipsum sed lorem vehicula luctus. Curabitur non
-							dolor rhoncus, hendrerit justo sit amet, vestibulum turpis.
-							Pellentesque id auctor tellus, vel ultricies augue. Duis
-							condimentum aliquet blandit. Fusce rhoncus et eros ut pharetra.
-							Phasellus convallis ultricies ligula ac gravida.</p>
+						<p>比如说，白鹭引擎。算是很友好的一款游戏引擎了，当然，它是基于HTML5的。cocos2d接触过，但是功能强大
+						IDE却差强人意，所以就还是说拜拜吧。Unity3d?很好很强大，可是我一个人搞不来素材哦，建模又哪是那么容易的事情呢？
+						我也就是写个小游戏，陶冶情操，所以呢？UE4和Unity3d你们先被打入冷宫了。最后，吐槽下腾讯的小游戏开发平台吧。
+						IDE真的是石器时代啊，官方对接API可真是啰嗦啊，槽点太多，都没心情搞个小游戏发在微信小游戏平台上。
+						<br><br>
+						</p>
 					</div>
 					<div class="accent-button button">
-						<a href="#blog">Continue Reading</a>
+						<a href="#game">点击下面，玩一下?</a>
 					</div>
 				</div>
 				<div class="col-md-12">
-					<div class="box-video">
+					<div class="box-video" onclick="location.href='game/uplif'">
 						<div class="bg-video"
 							style="background-image: url(https://unsplash.imgix.net/photo-1425036458755-dc303a604201?fit=crop&fm=jpg&q=75&w=1000);">
-							<div class="bt-play">Play</div>
+							<div class="bt-play"><a href="/game/uplif">Play</a></div>
 						</div>
 						<div class="video-container" style="height: 400px;">video</div>
 					</div>
@@ -250,18 +246,24 @@
 		</section>
 		<section id="contact" class="content-section">
 			<div id="contact-content">
-				<div class="section-heading">
-					<h1>
-						AboutMe<br/>
-						<em>关于我</em>
+				<div class="section-heading" >
+					<h1><br/>
+						AboutMe<br/><br/>
+						<em>关于我:)</em>
 					</h1>
-					<p>
-						此处，我不想废话，所以留个邮箱:letui@foxmail.com <br>
-						如果你想，也可以给我打电话;当然，非诚勿扰:16638303829
+					<p style="text-align:left;margin-left:100px">
+						<strong>public class Programmer{</strong><br>
+						<strong>int gender=1;</strong><br>
+						<strong>byte age=30;</strong><br>
+						<strong>byte weight=60;//kg</strong><br>
+						<strong>String telnumber="+86-16638303829"</strong><br>
+						<strong>String email="letui@foxmail.com"</strong><br>
+						<strong>}</strong><br>
 					</p>
 				</div>
 				<div class="section-content">
-					<form id="contact" action="#" method="post">
+					<br>
+					<form id="contact" action="#" method="post" onsubmit="alert('虽然你填写完整了，但是这只是个玩笑。最好还是，从你的邮箱发送吧。');return false;">
 						<div class="row">
 							<div class="col-md-4">
 								<fieldset>
@@ -289,7 +291,7 @@
 							</div>
 							<div class="col-md-12">
 								<fieldset>
-									<button type="submit" id="form-submit" class="btn">Send
+									<button type="submit" id="form-submit" class="btn" >Send
 										Message Now</button>
 								</fieldset>
 							</div>

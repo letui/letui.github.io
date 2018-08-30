@@ -564,6 +564,11 @@ header {
   position: relative;
   z-index: 10;
 }
+#blog .text-content p {
+	font-size: 15px;
+    line-height: 26px;
+    color: #343434
+}
 
 #blog .item .text-content h4 {
   margin-top: 0px;

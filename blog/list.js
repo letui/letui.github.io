@@ -17,6 +17,7 @@ for(i=$blog.last;i>0;i--){
 						var item=$(".item[tpl=blog]").clone();
 						tmpl=tmpl.replace("#tpl_image",i+"/img.png?"+Math.random());
 						tmpl=tmpl.replace("#tpl_title",txArray[0]);
+						tmpl=tmpl.replace("#tpl_id",i);
 						tmpl=tmpl.replace("#tpl_label","分类:"+txArray[1]);
 						tmpl=tmpl.replace("#tpl_summary",txArray[2].substr(0,140));
 						item.removeAttr("tpl");
@@ -26,4 +27,21 @@ for(i=$blog.last;i>0;i--){
 				});
 			}
 $(".item[tpl=blog]").remove();
+}
+
+function initArticle(id){
+	$.ajax({
+		url:"blog/"+id+"/"+"text.html",async:false,
+		success:function(html){
+			var txArray=html.split("#");
+			var tmpl=$(".item[tpl=blog]").html();
+			var item=$(".item[tpl=blog]");
+			tmpl=tmpl.replace("#tpl_image",id+"/img.png?"+Math.random());
+			tmpl=tmpl.replace("#tpl_title",txArray[0]);
+			tmpl=tmpl.replace("#tpl_label","分类:"+txArray[1]);
+			tmpl=tmpl.replace("#tpl_summary",txArray[2]);
+			item.removeAttr("tpl");
+			item.html(tmpl);
+		}
+	});
 }
