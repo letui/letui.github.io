@@ -10,7 +10,7 @@ for(i=$blog.last;i>0;i--){
 				$blog.count++;
 				if($blog.count>$blog.size)break;
 				$.ajax({
-					url:"blog/"+i+"/"+"text.html",async:false,
+					url:"blog/"+i+"/"+"text.html?"+Math.random(),async:false,
 					success:function(html){
 						var txArray=html.split("#");
 						var tmpl=$(".item[tpl=blog]").html();
@@ -31,7 +31,7 @@ $(".item[tpl=blog]").remove();
 
 function initArticle(id){
 	$.ajax({
-		url:"blog/"+id+"/"+"text.html",async:false,
+		url:"blog/"+id+"/"+"text.html?"+Math.random(),async:false,
 		success:function(html){
 			var txArray=html.split("#");
 			var tmpl=$(".item[tpl=blog]").html();
