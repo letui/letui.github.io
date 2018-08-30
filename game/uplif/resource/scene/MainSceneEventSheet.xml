@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eventSheets layout="MainScene" previous="" next="" version="2.2">
+  <item type="instance" UID="2957"/>
+  <item type="instance" UID="2951"/>
+  <item type="instance" UID="2945">
+    <item type="behavior" behaviorType="ScrollBehaivor" name="滚屏">
+      <item valueDataType="number" value="2" name="active"/>
+      <item valueDataType="string" value="%22scrollLeft%22" name="scrollDirectionType"/>
+      <item valueDataType="number" value="180" name="speed"/>
+    </item>
+    <item type="behavior" behaviorType="DestoryOutsideLayoutBehaivor" name="出界销毁">
+      <item valueDataType="number" value="2" name="type"/>
+    </item>
+    <item type="behavior" behaviorType="JumpthruBehavior" name="跳穿"/>
+  </item>
+  <item type="instance" UID="2942"/>
+  <item type="instance" UID="2939">
+    <item type="behavior" behaviorType="SolidBehaivor" name="刚体"/>
+    <item type="behavior" behaviorType="DestoryOutsideLayoutBehaivor" name="出界销毁">
+      <item valueDataType="number" value="2" name="type"/>
+    </item>
+    <item type="behavior" behaviorType="BulletBehaivor" name="子弹">
+      <item valueDataType="number" value="180" name="speed"/>
+      <item valueDataType="number" value="0" name="acceleration"/>
+      <item valueDataType="number" value="0" name="gravity"/>
+      <item valueDataType="number" value="180" name="angle"/>
+      <item valueDataType="number" value="0" name="bounceOffSolids"/>
+      <item valueDataType="number" value="2" name="solidChangedAngle"/>
+    </item>
+    <item type="behavior" behaviorType="FlashBehavior" name="闪烁">
+      <item valueDataType="number" value="0.1" name="onTime"/>
+      <item valueDataType="number" value="0.1" name="offTime"/>
+      <item valueDataType="number" value="2" name="times"/>
+      <item valueDataType="number" value="0" name="enabled"/>
+    </item>
+  </item>
+  <item type="instance" UID="2936">
+    <item type="behavior" behaviorType="BulletBehaivor" name="子弹">
+      <item valueDataType="number" value="180" name="speed"/>
+      <item valueDataType="number" value="0" name="acceleration"/>
+      <item valueDataType="number" value="0" name="gravity"/>
+      <item valueDataType="number" value="180" name="angle"/>
+      <item valueDataType="number" value="1" name="bounceOffSolids"/>
+      <item valueDataType="number" value="2" name="solidChangedAngle"/>
+    </item>
+  </item>
+  <item type="instance" UID="2933">
+    <item type="behavior" behaviorType="DestoryOutsideLayoutBehaivor" name="出界销毁">
+      <item valueDataType="number" value="2" name="type"/>
+    </item>
+    <item type="behavior" behaviorType="BulletBehaivor" name="子弹">
+      <item valueDataType="number" value="180" name="speed"/>
+      <item valueDataType="number" value="0" name="acceleration"/>
+      <item valueDataType="number" value="0" name="gravity"/>
+      <item valueDataType="number" value="180" name="angle"/>
+      <item valueDataType="number" value="1" name="bounceOffSolids"/>
+      <item valueDataType="number" value="2" name="solidChangedAngle"/>
+    </item>
+  </item>
+  <item type="instance" UID="2930">
+    <item type="behavior" behaviorType="PushoutSolidBehavior" name="刚体限制">
+      <item valueDataType="number" value="0" name="obstacleMode"/>
+    </item>
+    <item type="behavior" behaviorType="DestoryOutsideLayoutBehaivor" name="出界销毁">
+      <item valueDataType="number" value="2" name="type"/>
+    </item>
+    <item type="behavior" behaviorType="BulletBehaivor" name="子弹">
+      <item valueDataType="number" value="180" name="speed"/>
+      <item valueDataType="number" value="0" name="acceleration"/>
+      <item valueDataType="number" value="0" name="gravity"/>
+      <item valueDataType="number" value="180" name="angle"/>
+      <item valueDataType="number" value="0" name="bounceOffSolids"/>
+      <item valueDataType="number" value="1" name="solidChangedAngle"/>
+    </item>
+  </item>
+  <item type="instance" UID="2927">
+    <item type="behavior" behaviorType="DestoryOutsideLayoutBehaivor" name="出界销毁">
+      <item valueDataType="number" value="2" name="type"/>
+    </item>
+    <item type="behavior" behaviorType="ScrollBehaivor" name="滚屏">
+      <item valueDataType="number" value="2" name="active"/>
+      <item valueDataType="string" value="%22scrollLeft%22" name="scrollDirectionType"/>
+      <item valueDataType="number" value="180" name="speed"/>
+    </item>
+    <item type="behavior" behaviorType="SolidBehaivor" name="刚体"/>
+  </item>
+  <item type="instance" UID="14">
+    <item type="behavior" behaviorType="SolidBehaivor" name="刚体"/>
+    <item type="behavior" behaviorType="PlatformBehaivor" name="横轴跑酷">
+      <item valueDataType="number" value="150" name="maxspeed"/>
+      <item valueDataType="number" value="150" name="acc"/>
+      <item valueDataType="number" value="150" name="dec"/>
+      <item valueDataType="number" value="800" name="jumpStrength"/>
+      <item valueDataType="number" value="2000" name="g"/>
+      <item valueDataType="number" value="2000" name="maxFall"/>
+      <item valueDataType="number" value="1" name="enableDoubleJump"/>
+      <item valueDataType="number" value="0" name="jumpSustain"/>
+      <item valueDataType="number" value="1" name="defaultControls"/>
+      <item valueDataType="number" value="1" name="enabled"/>
+    </item>
+    <item type="behavior" behaviorType="BoundsOfRectBehaivor" name="边界限制">
+      <item valueDataType="number" value="0" name="boundType"/>
+      <item valueDataType="number" value="30" name="x"/>
+      <item valueDataType="number" value="0" name="y"/>
+      <item valueDataType="number" value="280" name="width"/>
+      <item valueDataType="number" value="736" name="height"/>
+    </item>
+    <item type="behavior" behaviorType="FlashBehavior" name="闪烁">
+      <item valueDataType="number" value="0.1" name="onTime"/>
+      <item valueDataType="number" value="0.1" name="offTime"/>
+      <item valueDataType="number" value="0" name="times"/>
+      <item valueDataType="number" value="0" name="enabled"/>
+    </item>
+  </item>
+  <item type="instance" UID="2924"/>
+  <item type="instance" UID="2921"/>
+  <item type="instance" UID="2918"/>
+  <item type="instance" UID="2915"/>
+  <item type="instance" UID="2912"/>
+  <item type="instance" UID="2909">
+    <item type="behavior" behaviorType="ScrollBehaivor" name="滚屏">
+      <item valueDataType="number" value="1" name="active"/>
+      <item valueDataType="string" value="%22scrollLeft%22" name="scrollDirectionType"/>
+      <item valueDataType="number" value="90" name="speed"/>
+    </item>
+  </item>
+  <item type="instance" UID="29">
+    <item type="behavior" behaviorType="SolidBehaivor" name="刚体"/>
+  </item>
+  <item type="instance" UID="23">
+    <item type="behavior" behaviorType="PushoutSolidBehavior" name="刚体限制">
+      <item valueDataType="number" value="0" name="obstacleMode"/>
+    </item>
+  </item>
+  <item type="instance" UID="11"/>
+  <item type="family" target="ground" UID="23,29">
+    <item name="behaviors">
+      <item type="behavior" behaviorType="ScrollBehaivor" name="滚屏">
+        <item valueDataType="number" value="1" name="active"/>
+        <item valueDataType="string" value="%22scrollLeft%22" name="scrollDirectionType"/>
+        <item valueDataType="number" value="180" name="speed"/>
+      </item>
+    </item>
+    <item name="variables"/>
+  </item>
+  <item type="family" target="cloud" UID="2912,2915,2918">
+    <item name="behaviors">
+      <item type="behavior" behaviorType="ScrollBehaivor" name="滚屏">
+        <item valueDataType="number" value="1" name="active"/>
+        <item valueDataType="string" value="%22scrollLeft%22" name="scrollDirectionType"/>
+        <item valueDataType="number" value="20" name="speed"/>
+      </item>
+    </item>
+    <item name="variables"/>
+  </item>
+  <item type="variable" variableName="score_count" variableType="number" initValue="100"/>
+  <item type="variable" variableName="inground" variableType="boolean" initValue="true"/>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="EveryTickEvent" callName="everyTick" isTrigger="false" target="System"/>
+    <item type="action" persistent="false" callTarget="instance" callName="moveForward" target="player1run">
+      <item valueDataType="number" value="2" name="15"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="EveryXSecondsEvent" callName="everyXSecondEvent" isTrigger="false" target="System">
+      <item valueDataType="number" value="ls.random()*3%2B6" name="interval"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="createObject" target="System">
+      <item valueDataType="string" value="AISprite2926" name="23" isFamily="false"/>
+      <item valueDataType="number" value="0" name="22"/>
+      <item valueDataType="number" value="800%2Bls.random()*100" name="21"/>
+      <item valueDataType="number" value="ls.random()*100%2B350" name="20"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="EveryXSecondsEvent" callName="everyXSecondEvent" isTrigger="false" target="System">
+      <item valueDataType="number" value="ls.random()*6%2B9" name="interval"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="createObject" target="System">
+      <item valueDataType="string" value="AISprite2944" name="23" isFamily="false"/>
+      <item valueDataType="number" value="0" name="22"/>
+      <item valueDataType="number" value="700%2Bls.random()*700" name="21"/>
+      <item valueDataType="number" value="ls.random()*120%2B100" name="20"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="EveryXSecondsEvent" callName="everyXSecondEvent" isTrigger="false" target="System">
+      <item valueDataType="number" value="ls.random()*9%2Bls.random()*5" name="interval"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="createObject" target="System">
+      <item valueDataType="string" value="AISprite2938" name="23" isFamily="false"/>
+      <item valueDataType="number" value="0" name="22"/>
+      <item valueDataType="number" value="420%2Bls.random()*100" name="21"/>
+      <item valueDataType="number" value="585" name="20"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="EveryXSecondsEvent" callName="everyXSecondEvent" isTrigger="false" target="System">
+      <item valueDataType="number" value="20%2Bls.random()*10" name="interval"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="createObject" target="System">
+      <item valueDataType="string" value="AISprite2932" name="23" isFamily="false"/>
+      <item valueDataType="number" value="0" name="22"/>
+      <item valueDataType="number" value="440" name="21"/>
+      <item valueDataType="number" value="60" name="20"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnDestoryEvent" callName="onDestory" isTrigger="true" target="AISprite2938"/>
+    <item type="action" persistent="false" callTarget="instance" callName="addTo" target="System">
+      <item valueDataType="string" value="score_count" name="14" variable="true"/>
+      <item valueDataType="number" value="5" name="13"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setText" target="TXTSCORE">
+      <item valueDataType="string" value="System.score_count" name="1"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnCollisionWithOtherObjectEvent" callName="onCollisionWithOtherObject" isTrigger="true" target="AISprite2938">
+      <item valueDataType="string" value="player1run" name="object" isFamily="false"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="subtractFrom" target="System">
+      <item valueDataType="string" value="score_count" name="12" variable="true"/>
+      <item valueDataType="number" value="15" name="11"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setText" target="TXTSCORE">
+      <item valueDataType="string" value="System.score_count" name="1"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="destory" target="AISprite2938"/>
+    <item type="action" persistent="false" callTarget="instance" callName="startFlash" target="player1run" behaviorName="闪烁">
+      <item valueDataType="number" value="0.1" name="1"/>
+      <item valueDataType="number" value="0.1" name="2"/>
+      <item valueDataType="number" value="3" name="3"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="play" target="zj">
+      <item valueDataType="number" value="1" name="2"/>
+      <item valueDataType="number" value="1" name="3"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnCollisionWithOtherObjectEvent" callName="onCollisionWithOtherObject" isTrigger="true" target="AISprite22">
+      <item valueDataType="string" value="player1run" name="object" isFamily="false"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setBoolean" target="System">
+      <item valueDataType="string" value="inground" name="8" variable="true"/>
+      <item valueDataType="number" value="1" name="7"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnPlatformJumpEvent" callName="onJump" isTrigger="true" target="player1run" behaviorName="横轴跑酷"/>
+    <item type="action" persistent="false" callTarget="instance" callName="setBoolean" target="System">
+      <item valueDataType="string" value="inground" name="8" variable="true"/>
+      <item valueDataType="number" value="0" name="7"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setAcceleration" target="player1run" behaviorName="横轴跑酷">
+      <item valueDataType="number" value="0" name="acc"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnCollisionWithOtherObjectEvent" callName="onCollisionWithOtherObject" isTrigger="true" target="AISprite2926">
+      <item valueDataType="string" value="player1run" name="object" isFamily="false"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="subtractFrom" target="System">
+      <item valueDataType="string" value="score_count" name="12" variable="true"/>
+      <item valueDataType="number" value="5" name="11"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setText" target="TXTSCORE">
+      <item valueDataType="string" value="System.score_count" name="1"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="EveryXSecondsEvent" callName="everyXSecondEvent" isTrigger="false" target="System">
+      <item valueDataType="number" value="ls.random()*10%2B6" name="interval"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="createObject" target="System">
+      <item valueDataType="string" value="AISprite2935" name="23" isFamily="false"/>
+      <item valueDataType="number" value="0" name="22"/>
+      <item valueDataType="number" value="ls.random()*300%2Bls.random()*300%2B400" name="21"/>
+      <item valueDataType="number" value="260%2Bls.random()*20" name="20"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="IsBetweenValuesEvent" callName="isBetweenValues" isTrigger="false" target="System">
+      <item valueDataType="number" value="ls.random()*90" name="value"/>
+      <item valueDataType="number" value="45" name="lowerValue"/>
+      <item valueDataType="number" value="46" name="highValue"/>
+    </item>
+    <item type="condition" callTarget="instance" paramsClass="EveryXSecondsEvent" callName="everyXSecondEvent" isTrigger="false" target="System">
+      <item valueDataType="number" value="5" name="interval"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="createObject" target="System">
+      <item valueDataType="string" value="AISprite2929" name="23" isFamily="false"/>
+      <item valueDataType="number" value="0" name="22"/>
+      <item valueDataType="number" value="420" name="21"/>
+      <item valueDataType="number" value="60" name="20"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="IsTouchDownEvent" callName="isTouchDown" isTrigger="false" target="Touch"/>
+    <item type="action" persistent="false" callTarget="instance" callName="simulateControl" target="player1run" behaviorName="横轴跑酷">
+      <item valueDataType="number" value="0" name="ctrl"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnTouchEndEvent" callName="onTouchEnd" isTrigger="true" target="Touch"/>
+    <item type="action" persistent="false" callTarget="instance" callName="simulateControl" target="player1run" behaviorName="横轴跑酷">
+      <item valueDataType="number" value="2" name="ctrl"/>
+    </item>
+  </item>
+</eventSheets>
