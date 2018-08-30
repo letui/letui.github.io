@@ -1,10 +1,11 @@
 var $blog={
 total:1,
-last:3,
+last:5,
 size:9,
 count:0
 }
-function initBlogList(){
+function initBlogList(size){
+if(size)$blog.size=size;
 for(i=$blog.last;i>0;i--){
 				$blog.count++;
 				if($blog.count>$blog.size)break;
@@ -16,7 +17,7 @@ for(i=$blog.last;i>0;i--){
 						var item=$(".item[tpl=blog]").clone();
 						tmpl=tmpl.replace("#tpl_image",i+"/img.png?"+Math.random());
 						tmpl=tmpl.replace("#tpl_title",txArray[0]);
-						tmpl=tmpl.replace("#tpl_label",txArray[1]);
+						tmpl=tmpl.replace("#tpl_label","分类:"+txArray[1]);
 						tmpl=tmpl.replace("#tpl_summary",txArray[2].substr(0,140));
 						item.removeAttr("tpl");
 						item.html(tmpl);
