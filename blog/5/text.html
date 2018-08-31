@@ -14,7 +14,7 @@ SmartSQL-广告
 <br>
 <pre>
 $ s = $.init(setup(),"src/main/resources");//setup() return instance of DataSource
-Person p=s.select("test#select", Person.class, 2);
+Person p=s.select("test@select", Person.class, 2);
 System.out.println(p.getAge());
 
 OR
@@ -32,7 +32,7 @@ System.out.println(p2.getUname());
 Jquery风格
 
 $(S.init(setup(),"src/main/resources"));
-String rst=$(select).done("test#count");//select 为内置枚举,insert,delete,update 均支持
+String rst=$(select).done("test@count");//select 为内置枚举,insert,delete,update 均支持
 Person p=$(select).done(A.file("test").sql("select"),Person.class,2);
 System.out.println(p.getAge());
 </pre>
