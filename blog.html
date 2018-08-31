@@ -16,26 +16,6 @@
 <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 <body>
-	<header class="nav-down responsive-nav hidden-lg hidden-md">
-		<button type="button" id="nav-toggle" class="navbar-toggle"
-			data-toggle="collapse" data-target="#main-nav">
-			<span class="sr-only">导航</span> <span class="icon-bar"></span> <span
-				class="icon-bar"></span> <span class="icon-bar"></span>
-		</button>
-		<!--/.navbar-header-->
-		<div id="main-nav" class="collapse navbar-collapse">
-			<nav>
-				<ul class="nav navbar-nav">
-					<li><a href="#top">首页</a></li>
-					<li><a href="#blog">博客</a></li>
-					<li><a href="#projects">项目</a></li>
-					<li><a href="#game">游戏</a></li>
-					<li><a href="#contact">联系</a></li>
-				</ul>
-			</nav>
-		</div>
-	</header>
-
 	<div class="sidebar-navigation hidde-sm hidden-xs">
 		<div class="logo">
 			<a href="/">乐推</a>
@@ -82,14 +62,8 @@
 			<div class="section-content">
 				<div class="owl-carousel owl-theme" id="tpl_blog_list">
 					<div class="item" tpl="blog">
-						<div class="image" >
-							<img src="blog/#tpl_image" alt="" style="height:360px">
-							<div class="featured-button button">
-								<a href="#projects">点击阅读</a>
-							</div>
-						</div>
 						<div class="text-content">
-							<h4 class="title" >#tpl_title</h4>
+							<a href="article.html?#tpl_id" ><h4 class="title" >#<em style="color:#45489a">#tpl_title</em></h4></a>
 							<span class="label">#tpl_label</span>
 							<p class="summary">#tpl_summary</p>
 						</div>
@@ -109,9 +83,13 @@
 	<script src="js/vendor/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/main.js"></script>
-	<script src="blog/list.js"></script>
 	<script>
-		initBlogList();
+		var blogjs=$("<script>");
+		blogjs.attr("src","blog/list.js?"+Math.random());
+		$(document.body).append(blogjs);
+		$(document).ready(function(){
+			initBlogPages();
+		});
     </script>
 </body>
 </html>
