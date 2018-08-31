@@ -1,6 +1,39 @@
-Julia之面向对象
+SmartSQL-广告
 #
-Julia编程语言
+编程语言,数据库
 #
-基本陈述完毕，现在说说面向对象是怎么回事。Julia不允许在结构体里定义函数，至少目前我没成功过，想要实现Java那种 obj.method()形式的调用，不太可能。（Java Bean 里是可以定义字段和方法的）
-但是，julia有module这个神奇的东西。代码里是一个module包含了一个结构体和两个方法。
+2018-08-31<br>
+前几日，写了有个项目放在了github上。名字:smart-sql。<br>
+大概原因是我嫌弃mybatis用起来太啰嗦，（7年前我没嫌弃过它）<br>
+嗯，对，那时候我嫌弃的是hibernate，自以为是的发明了HQL。<br>
+对于这种HQL，我的看法就是，作者有点儿迷之自信了。妄图挑战SQL的权威和地位。<br>
+当时的直觉告诉我，远离Hibernate。<br><br>
+可能用mybatis时间久了，很多东西也觉得更小，更易用，更轻量级才是最好的。<br>
+所以呢？就废了一天左右的时间写了个smart-sql，向Jquery看齐。<br>
+简而言之，就是用更漂亮的语法来进行操纵数据库。不啰嗦了，看下面代码
+<br>
+<pre>
+$ s = $.init(setup(),"src/main/resources");//setup() return instance of DataSource
+Person p=s.select("test#select", Person.class, 2);
+System.out.println(p.getAge());
+
+OR
+
+A target=A.file("test").sql("select");
+Person p2=s.select(target, Person.class, 1);
+System.out.println(p2.getUname());
+
+OR
+
+target=A.file("test").sql("select").pojo(Person.class);
+p2=s.select(target,1);
+System.out.println(p2.getUname());
+
+Jquery风格
+
+$(S.init(setup(),"src/main/resources"));
+String rst=$(select).done("test#count");//select 为内置枚举,insert,delete,update 均支持
+Person p=$(select).done(A.file("test").sql("select"),Person.class,2);
+System.out.println(p.getAge());
+</pre>
+名字叫做smart-sql是不是有点蹭smart小车的热度呢？不打自招，所以就拿smart小车来当做封面吧。
