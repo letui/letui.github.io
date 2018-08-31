@@ -1,6 +1,6 @@
 var $blog={
 total:1,
-last:5,
+last:3,
 size:9,
 count:0
 }
@@ -39,7 +39,7 @@ function initArticle(id){
 			tmpl=tmpl.replace("#tpl_image",id+"/img.png?"+Math.random());
 			tmpl=tmpl.replace("#tpl_title",txArray[0]);
 			tmpl=tmpl.replace("#tpl_label","分类:"+txArray[1]);
-			tmpl=tmpl.replace("#tpl_summary",txArray[2]);
+			tmpl=tmpl.replace("#tpl_summary",txArray[2].replace("\n","<br>"));
 			item.removeAttr("tpl");
 			item.html(tmpl);
 		}

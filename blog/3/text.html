@@ -1,6 +1,40 @@
 Julia之面向对象
 #
-Julia编程语言
+编程语言
 #
-基本陈述完毕，现在说说面向对象是怎么回事。Julia不允许在结构体里定义函数，至少目前我没成功过，想要实现Java那种 obj.method()形式的调用，不太可能。（Java Bean 里是可以定义字段和方法的）
-但是，julia有module这个神奇的东西。代码里是一个module包含了一个结构体和两个方法。
+<pre>
+module gson
+  struct Goo
+  name
+  age::Int8
+  end
+  function tojson()
+    println("I'am toJson method")
+    return "I'am toJson"
+  end
+  function tojsonWith(obj::gson.Goo)
+    println("I'am toJson method with ",obj.name)
+  end
+end
+</pre>
+以上代码可以直接保存为gson.jl，里面关键字，module struct end function。<br>
+module:表示一个模块<br>
+struct:表示一个结构体，跟C类似<br>
+end:一个代码体的结束 类似 }<br>
+function:定义函数的关键字<br>
+x::V变量定义和类型约束<br>
+
+基本陈述完毕，现在说说面向对象是怎么回事。<br>
+Julia不允许在结构体里定义函数，至少目前我没成功过。<br>
+想要实现Java那种 obj.method()形式的调用，不太可能。（Java Bean 里是可以定义字段和方法的）<br>
+但是，julia有module这个神奇的东西。代码里是一个module包含了一个结构体和两个方法。那么如何使用呢？<br>
+
+建立一个Boot.jl，代码如下<br>
+<pre>
+include("gson.jl")
+gson.tojson()
+goo=gson.Goo("google",32)
+gson.tojsonWith(goo)
+</pre>
+到此为止，看代码就应该能懂Julia是如何面向对象了。而且还出现了include这个神奇的关键函数。一股子C语言的浓烈味道会不会把你吸引呢？<br>
+这种严格的将结构体和模块整合在一起才能贴合上 一个Java普通的Bean的语法要求，有多少人能适应得来呢？至少我感觉不是太爽，但是又说不出。<br>
