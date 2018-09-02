@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eventSheets layout="Start" previous="" next="" version="2.2">
+  <item type="instance" UID="2996">
+    <item type="behavior" behaviorType="FlashBehavior" name="闪烁">
+      <item valueDataType="number" value="0.1" name="onTime"/>
+      <item valueDataType="number" value="0.1" name="offTime"/>
+      <item valueDataType="number" value="0" name="times"/>
+      <item valueDataType="number" value="1" name="enabled"/>
+    </item>
+  </item>
+  <item type="instance" UID="2993"/>
+  <item type="instance" UID="2990"/>
+  <item type="instance" UID="2984"/>
+  <item type="instance" UID="2987"/>
+  <item type="variable" variableName="score_count" variableType="number" initValue="100"/>
+  <item type="variable" variableName="inground" variableType="boolean" initValue="true"/>
+  <item type="variable" variableName="key_count" variableType="number" initValue="0"/>
+  <item type="variable" variableName="hp" variableType="number" initValue="3"/>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnButtonEndEvent" callName="onButtonEnd" isTrigger="true" target="AIButton2995"/>
+    <item type="action" persistent="false" callTarget="instance" callName="gotoScene" target="System">
+      <item valueDataType="string" value="%22MainScene%22" name="18"/>
+    </item>
+  </item>
+</eventSheets>

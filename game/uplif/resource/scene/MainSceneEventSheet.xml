@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eventSheets layout="MainScene" previous="" next="" version="2.2">
+  <item type="instance" UID="2978"/>
+  <item type="instance" UID="2975"/>
+  <item type="instance" UID="2972"/>
+  <item type="instance" UID="2969"/>
+  <item type="instance" UID="2966"/>
+  <item type="instance" UID="2960"/>
   <item type="instance" UID="2957"/>
-  <item type="instance" UID="2951"/>
   <item type="instance" UID="2945">
     <item type="behavior" behaviorType="ScrollBehaivor" name="滚屏">
       <item valueDataType="number" value="2" name="active"/>
@@ -36,7 +41,7 @@
   </item>
   <item type="instance" UID="2936">
     <item type="behavior" behaviorType="BulletBehaivor" name="子弹">
-      <item valueDataType="number" value="180" name="speed"/>
+      <item valueDataType="number" value="330" name="speed"/>
       <item valueDataType="number" value="0" name="acceleration"/>
       <item valueDataType="number" value="0" name="gravity"/>
       <item valueDataType="number" value="180" name="angle"/>
@@ -58,9 +63,6 @@
     </item>
   </item>
   <item type="instance" UID="2930">
-    <item type="behavior" behaviorType="PushoutSolidBehavior" name="刚体限制">
-      <item valueDataType="number" value="0" name="obstacleMode"/>
-    </item>
     <item type="behavior" behaviorType="DestoryOutsideLayoutBehaivor" name="出界销毁">
       <item valueDataType="number" value="2" name="type"/>
     </item>
@@ -69,7 +71,7 @@
       <item valueDataType="number" value="0" name="acceleration"/>
       <item valueDataType="number" value="0" name="gravity"/>
       <item valueDataType="number" value="180" name="angle"/>
-      <item valueDataType="number" value="0" name="bounceOffSolids"/>
+      <item valueDataType="number" value="1" name="bounceOffSolids"/>
       <item valueDataType="number" value="1" name="solidChangedAngle"/>
     </item>
   </item>
@@ -155,6 +157,8 @@
   </item>
   <item type="variable" variableName="score_count" variableType="number" initValue="100"/>
   <item type="variable" variableName="inground" variableType="boolean" initValue="true"/>
+  <item type="variable" variableName="key_count" variableType="number" initValue="0"/>
+  <item type="variable" variableName="hp" variableType="number" initValue="3"/>
   <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
     <item type="condition" callTarget="instance" paramsClass="EveryTickEvent" callName="everyTick" isTrigger="false" target="System"/>
     <item type="action" persistent="false" callTarget="instance" callName="moveForward" target="player1run">
@@ -169,7 +173,7 @@
       <item valueDataType="string" value="AISprite2926" name="23" isFamily="false"/>
       <item valueDataType="number" value="0" name="22"/>
       <item valueDataType="number" value="800%2Bls.random()*100" name="21"/>
-      <item valueDataType="number" value="ls.random()*100%2B350" name="20"/>
+      <item valueDataType="number" value="ls.random()*50%2B400" name="20"/>
     </item>
   </item>
   <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
@@ -180,7 +184,7 @@
       <item valueDataType="string" value="AISprite2944" name="23" isFamily="false"/>
       <item valueDataType="number" value="0" name="22"/>
       <item valueDataType="number" value="700%2Bls.random()*700" name="21"/>
-      <item valueDataType="number" value="ls.random()*120%2B100" name="20"/>
+      <item valueDataType="number" value="ls.random()*50%2B170" name="20"/>
     </item>
   </item>
   <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
@@ -226,15 +230,39 @@
     <item type="action" persistent="false" callTarget="instance" callName="setText" target="TXTSCORE">
       <item valueDataType="string" value="System.score_count" name="1"/>
     </item>
-    <item type="action" persistent="false" callTarget="instance" callName="destory" target="AISprite2938"/>
     <item type="action" persistent="false" callTarget="instance" callName="startFlash" target="player1run" behaviorName="闪烁">
       <item valueDataType="number" value="0.1" name="1"/>
       <item valueDataType="number" value="0.1" name="2"/>
-      <item valueDataType="number" value="3" name="3"/>
+      <item valueDataType="number" value="2" name="3"/>
     </item>
     <item type="action" persistent="false" callTarget="instance" callName="play" target="zj">
       <item valueDataType="number" value="1" name="2"/>
       <item valueDataType="number" value="1" name="3"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="subtractFrom" target="System">
+      <item valueDataType="string" value="hp" name="12" variable="true"/>
+      <item valueDataType="number" value="1" name="11"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setText" target="hpTxt">
+      <item valueDataType="string" value="System.hp" name="1"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="destory" target="AISprite2938"/>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnCollisionWithOtherObjectEvent" callName="onCollisionWithOtherObject" isTrigger="true" target="AISprite2935">
+      <item valueDataType="string" value="player1run" name="object" isFamily="false"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="destory" target="AISprite2935"/>
+    <item type="action" persistent="false" callTarget="instance" callName="play" target="zj">
+      <item valueDataType="number" value="1" name="2"/>
+      <item valueDataType="number" value="1" name="3"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="subtractFrom" target="System">
+      <item valueDataType="string" value="hp" name="12" variable="true"/>
+      <item valueDataType="number" value="2" name="11"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setText" target="hpTxt">
+      <item valueDataType="string" value="System.hp" name="1"/>
     </item>
   </item>
   <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
@@ -254,6 +282,9 @@
     </item>
     <item type="action" persistent="false" callTarget="instance" callName="setAcceleration" target="player1run" behaviorName="横轴跑酷">
       <item valueDataType="number" value="0" name="acc"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="scrollToObject" target="System">
+      <item valueDataType="string" value="player1run" name="5" isFamily="false"/>
     </item>
   </item>
   <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
@@ -276,7 +307,7 @@
       <item valueDataType="string" value="AISprite2935" name="23" isFamily="false"/>
       <item valueDataType="number" value="0" name="22"/>
       <item valueDataType="number" value="ls.random()*300%2Bls.random()*300%2B400" name="21"/>
-      <item valueDataType="number" value="260%2Bls.random()*20" name="20"/>
+      <item valueDataType="number" value="260%2Bls.random()*80" name="20"/>
     </item>
   </item>
   <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
@@ -286,7 +317,7 @@
       <item valueDataType="number" value="46" name="highValue"/>
     </item>
     <item type="condition" callTarget="instance" paramsClass="EveryXSecondsEvent" callName="everyXSecondEvent" isTrigger="false" target="System">
-      <item valueDataType="number" value="5" name="interval"/>
+      <item valueDataType="number" value="Math.random()*9" name="interval"/>
     </item>
     <item type="action" persistent="false" callTarget="instance" callName="createObject" target="System">
       <item valueDataType="string" value="AISprite2929" name="23" isFamily="false"/>
@@ -305,6 +336,57 @@
     <item type="condition" callTarget="instance" paramsClass="OnTouchEndEvent" callName="onTouchEnd" isTrigger="true" target="Touch"/>
     <item type="action" persistent="false" callTarget="instance" callName="simulateControl" target="player1run" behaviorName="横轴跑酷">
       <item valueDataType="number" value="2" name="ctrl"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnCollisionWithOtherObjectEvent" callName="onCollisionWithOtherObject" isTrigger="true" target="AISprite2929">
+      <item valueDataType="string" value="player1run" name="object" isFamily="false"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="destory" target="AISprite2929"/>
+    <item type="action" persistent="false" callTarget="instance" callName="play" target="getKey">
+      <item valueDataType="number" value="1" name="2"/>
+      <item valueDataType="number" value="1" name="3"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="addTo" target="System">
+      <item valueDataType="string" value="key_count" name="14" variable="true"/>
+      <item valueDataType="number" value="1" name="13"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setText" target="keyCountTxt">
+      <item valueDataType="string" value="System.key_count" name="1"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnCollisionWithOtherObjectEvent" callName="onCollisionWithOtherObject" isTrigger="true" target="AISprite2932">
+      <item valueDataType="string" value="player1run" name="object" isFamily="false"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="addTo" target="System">
+      <item valueDataType="string" value="hp" name="14" variable="true"/>
+      <item valueDataType="number" value="1" name="13"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setText" target="hpTxt">
+      <item valueDataType="string" value="System.hp" name="1"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="play" target="jump">
+      <item valueDataType="number" value="1" name="2"/>
+      <item valueDataType="number" value="1" name="3"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="EveryTickEvent" callName="everyTick" isTrigger="false" target="System"/>
+    <item type="condition" callTarget="instance" paramsClass="CompareInstanceVariableEvent" callName="compareInstanceVariable" isTrigger="false" target="System">
+      <item valueDataType="string" value="hp" name="instanceVariable" variable="true"/>
+      <item valueDataType="string" value="%22lessOrEqual%22" name="operationType"/>
+      <item valueDataType="any" value="0" name="value"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="wait" target="System">
+      <item valueDataType="number" value="2" name="time"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="gotoScene" target="System">
+      <item valueDataType="string" value="%22Start%22" name="18"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setValue" target="System">
+      <item valueDataType="string" value="hp" name="10" variable="true"/>
+      <item valueDataType="any" value="3" name="9"/>
     </item>
   </item>
 </eventSheets>
