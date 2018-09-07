@@ -1,0 +1,67 @@
+Java之线程
+#
+编程语言
+#
+2018-08-31<br>
+线程是很了不起的编程语言特性，如果哪个编程语言突然说不支持多线程，那么估计第二天这个编程语言就死掉了。<br>
+今天要说的是，线程在程序间的损耗。很多时候我们会需要在主线程中运行另一个线程，这个线程中的逻辑要求是:<br>
+每1秒执行一次逻辑代码，这段逻辑代码可以是各种，哪怕是最简单的一个输出。<br>
+老样子，上代码。
+<br>
+<pre>
+			Runnable sub = new Runnable() {
+			long lastTime=0;
+			long mistake=0;
+			@Override
+			public void run() {
+				while (true) {
+					try {
+						Thread.sleep(1000l);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					long now=System.currentTimeMillis();
+					if(lastTime!=0) {
+						mistake+=now-lastTime-1000;
+					}
+					lastTime=now;
+					System.out.println(mistake);
+					if(mistake>1000)break;
+				}
+				System.out.println(System.currentTimeMillis());
+			}
+		};
+		Thread subWrapper = new Thread(sub);
+		long progStart=System.currentTimeMillis();
+		System.out.println(progStart);
+		subWrapper.start();
+		Thread curt = Thread.currentThread();
+		System.out.println(curt);
+		System.out.println(curt.activeCount());
+</pre>
+代码解读，启动一个线程，间隔一秒钟执行一次逻辑代码，并且输出两次间隔的时间误差。误差出现在哪里呢？<br>
+两次赋值，一次计算，一次输出。这就是逻辑代码。<br>
+对误差进行累计，满足1000时线程结束，输出结束时间。<br>
+程序逻辑代码是要耗费时间的，哪怕是最简单的赋值，输出。（其他复杂的就更不必提）<br>
+所以，千万不要假定一段代码要求每分钟执行一次，计时60分钟，它就刚好可以执行60次。<br>
+以上的代码，在我的电脑上系统MacOS，JDK.1.8，CPU 2.3 GHz Intel Core i5，内存 8G。<br>
+误差到达一秒钟时，共计耗时五分钟。<br>
+如此简单的逻辑，每五分钟损失1秒钟的时间。可想而知，程序里的日志记录对程序本身的性能损耗。<br>
+需要说的是，任何代码的执行都是有代价的，程序里的日志并非是输出的越多越好，越详细越好。<br>
+<h2>彩蛋：科普线程锁-内置锁</h2>
+<pre>
+		for(int i=0;i<10;i++) {
+			final int j=i;
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					//synchronized (System.out) {
+						System.out.println(j);
+					//}
+				}
+			}).start();;
+		}
+</pre>
+上面有两行代码是被注释了的，放开和不放开的执行结果是不通的。所以呢？在某种场景下，需要多线程，但又需要保证先后顺序时？<br>
+比如List里的任务，是某一个对象的同一个方法，但是方法的入参不一样。可是呢？这么一搞，锁住了，又队列执行了。所以呢？好像多线程的<br>
+优点又抹杀了。哈哈<br>
