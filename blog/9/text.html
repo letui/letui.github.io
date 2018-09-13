@@ -1,0 +1,70 @@
+接口之Java&nbsp;VS&nbsp;C
+#
+编程语言
+#
+<strong>2018-09-13</strong><br>
+上篇文章扯淡了很多思想性的东西，会让很多人觉得不接地气。<br>
+我写博客，很散。<br>
+说说C语言里有没有接口吧。说没有的，从语言语法上来说，成立。<br>
+说有的，从编程思想上来说，也成立。<br>
+那么先来看Java中的接口和实现。
+<pre>
+public interface SayHelloJob {
+	String say(String name);
+}
+
+public class JackSay implements SayHelloJob {
+
+	@Override
+	public String say(String name) {
+		System.out.println("aha i get u");
+		return name;
+	}
+}
+
+public class TomSay implements SayHelloJob {
+
+	@Override
+	public String say(String name) {
+		System.out.println("Hello,I am "+name);
+		return name;
+	}
+}
+</pre>
+<pre>
+SayHelloJob say1=new JackSay();
+SayHelloJob say2=new TomSay();
+		say1.say("Jack");
+		say2.say("Tom");
+</pre>
+什么意思，我就不说了。下边儿看看C语言"接口"。
+<pre>
+char *funcSay(char *arg, char *imp(char*)) {
+	return imp(arg);
+}
+
+char *JackSay(char* name) {
+	printf("Hi,%s\n", name);
+	return name;
+}
+
+char *TomSay(char* name) {
+	printf("hello ,%s\n", name);
+	return name;
+}
+
+int main() {
+	funcSay("Jack", JackSay);
+	funcSay("Tom", TomSay);
+	return 0;
+}
+</pre>
+哎哟，我去，看看，看看，C语言多么简洁啊。函数指针就搞定了接口，代码少啊。<br>
+想用哪个实现，就用哪个啊。你看和Java没有区别啊。<br>
+拉倒吧。用起来没区别。可是这种C里的函数指针是限制在 函数定义的类型上的。这能算的上强约束么？<br>
+符合funcSay定义要求的实现函数有很多很多，很随意。假设代码结构的管理者不能遵照业务去划分代码，那么必然<br>
+带来滥用的后果，代码的可读性必然降低。<br>
+反观Java，就不是咯。在函数上层包了一层类级别的约束。凡是实现了接口的实现类，方可归为该业务。<br>
+从语言设计上，Java的初衷就是，代码是给人看的，且不是只给一个人看的，所以Java的这种设计还是比较称赞的。<br>
+但是，带来了一层类名约束，必然就带来了代码上的冗长。这就是为啥Java类多的原因。双刃剑嘛。<br>
+
