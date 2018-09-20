@@ -27,15 +27,15 @@ void *testSay (){
 很简单，h文件负责声明，c文件负责定义，谁调用，爱谁谁去。<br>
 再来一个源文件FuckJp.c
 <pre>
-#include&lt;stdio.h>
+include&lt;stdio.h>
 void fuckJapen(){
 	printf("oh ye ,oh aha ,oh come on\n");
 }
 </pre>
 最后，main函数登场<br>
 <pre>
-#include&lt;stdio.h>
-#include"MyUtil.h"
+include&lt;stdio.h>
+include"MyUtil.h"
 
 extern void fuckJapen();
 
@@ -100,6 +100,7 @@ C里面有一个FuckJp.c文件，当中有一个fuckJapen方法,这个方法在M
 能不能干掉这个只认类的特性呢？从编写实现层代码上来说能，从代码结构上避免不了。<br>
 Java中额import static 就是从实现层上解决这个问题，但是必须要要将目标方法定义成静态。<br>
 <b>结束吧，又是一篇废话，这废话和垃圾代码只想说明，编程语言都是相通的，仅此而已。</b>
+<b>上文中C源码,include 省略了井号</b>
 
 
 
