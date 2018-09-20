@@ -1,6 +1,6 @@
 var $blog={
 total:1,
-last:9,
+last:10,
 size:9,
 count:0
 }

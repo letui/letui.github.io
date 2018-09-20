@@ -1,0 +1,108 @@
+Java之import和C之include&extern
+#
+编程语言
+#
+<strong>2018-09-20</strong><br>
+C语言里的#include 可能是很普遍很必要的设计了。谁也不能写程序跟写长篇小说一样<br>
+一本书干到底(映射:一个代码源文件)<br>
+Java有import这个关键字，和C有着异曲同工之妙<br>
+可是C还有extern呢，Java呢？来来来，出来，出来。<br>
+事实上Java也有。                               
+<br>
+先来一段C代码<br>
+<b>MyUtil.h</b>
+<pre>
+void *testHello (void);
+void *testSay (void);
+</pre>
+<b>MyUtil.c</b>
+<pre>
+void *testHello (){
+	printf("%s\n","Im in Here");
+}
+void *testSay (){
+	printf("%s\n","Im say function");
+}
+</pre>
+很简单，h文件负责声明，c文件负责定义，谁调用，爱谁谁去。<br>
+再来一个源文件FuckJp.c
+<pre>
+#include&lt;stdio.h>
+void fuckJapen(){
+	printf("oh ye ,oh aha ,oh come on\n");
+}
+</pre>
+最后，main函数登场<br>
+<pre>
+#include&lt;stdio.h>
+#include"MyUtil.h"
+
+extern void fuckJapen();
+
+int main() {
+	testHello();
+	//testSay();
+	fuckJapen();
+	printf("%s","The End of Test program");
+	return 0;
+}
+</pre>
+搞C的同学，肯定看得懂咯。搞Java的同学估计也能看懂个大概。<br>
+下边Java登场,Java肯定要简单些。<br>
+<b>MyUtil.java</b>
+<pre>
+package dubbo.client.util;
+
+public class MyUtil {
+ public void testHello() {
+	 System.out.println("im hello in Java");
+ }
+ 
+ public void testSay() {
+	 System.out.println("im say in Java");
+ }
+}
+</pre>
+<b>MyUtil_Extern.java</b>
+<pre>
+package dubbo.client.util;
+
+public class MyUtil_Extern {
+	public static void testExtern() {
+		System.out.println("Im extern");
+	}
+}
+
+</pre>
+<b>Main函数</b>
+<pre>
+package dubbo.client.test;
+import dubbo.client.util.MyUtil;//<font color="red">对应C示例中 #include"MyUtil.h"</font>
+import static dubbo.client.util.MyUtil_Extern.testExtern; //<font color="red">对应C示例中 extern void fuckJapen();</font>
+public class Boot {
+	public static void main(String[] args) {
+		MyUtil u=new MyUtil();
+		u.testHello();
+		u.testSay();
+		testExtern();
+	}
+}
+</pre>
+OK,到此为止，示例代码彻底结束，这些毫无意义的代码总算写完了。下面来对比分析。<br>
+C示例当中有两个函数testSay和testHello，这两个方法的使用是通过include引进来的。<br>
+且两个函数都在同一个头文件中声明了。所以，引入一个头文件自然可以使用头文件中声明的函数。<br>
+Java中的MyUtil.java之里面两个函数和C的MyUtil.c是对应的，不同之处在于Java多了个类名称而已。<br>
+所以这个时候，include "MyUtil.h"等同于import [package-name].MyUtil<br>
+C里面有一个FuckJp.c文件，当中有一个fuckJapen方法,这个方法在Main函数中被用来extern。<br>
+为了方便直白理解，我构造Java对应的时候，创建的类名是MyUtil_Extern。<br>
+这个时候，我们已经把语法设计的对应关系找出来了，但是，还是有差异的。<br>
+差异体现在，我们在Java中用test*两个方法时，必须new那么一下。毕竟嘛，Java只认类（划重点：当然还有包）<br>
+能不能干掉这个只认类的特性呢？从编写实现层代码上来说能，从代码结构上避免不了。<br>
+Java中额import static 就是从实现层上解决这个问题，但是必须要要将目标方法定义成静态。<br>
+<b>结束吧，又是一篇废话，这废话和垃圾代码只想说明，编程语言都是相通的，仅此而已。</b>
+
+
+
+
+
+
