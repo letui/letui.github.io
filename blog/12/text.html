@@ -1,0 +1,81 @@
+蹩脚的用C去面向对象
+#
+编程语言
+#
+<strong>2018-09-27</strong><br>
+能不能用C语言去面向对象编程?<br>
+都知道JAVA是面向对象的语言，显著特点就是有Class（类）的概念。<br>
+C里面有typedef这个牛逼的关键字，算是个很高级的抽象语法约定。<br>
+问题：type 是否等同于 class？
+我也说不清楚。争论起来估计会有一大堆琐碎。
+但是在一个Java类里面，最让人爽的地方就是，可以有属性，可以有方法。
+用Java去定义一个Person，具备基本的姓名，年龄属性，具备talk,walk的功能。
+Class Person
+name
+age
+void talk();
+void walk();
+以上就是Java类的最简洁的描述。也是最贴合人的基本认知逻辑的。
+总之Person代表了人的定义，new 后代表某一个人。
+假设，这个人的能力很弱，talk方法只能输出 自己的姓名和年龄。那么，实现起来必然是。
+System.out.println(this.name+"-"+this.age);
+重点:this。
+<br>
+分割线
+<hr>
+那么C呢?C有结构体，可以封装字段属性。C有函数指针，利用结构体也能从语法上实现类似Java的类
+的同时具备属性和方法的特性。
+代码如下
+头文件person.h
+<pre>
+#ifndef PERSON_H_
+#define PERSON_H_
+
+#endif /* PERSON_H_ */
+typedef struct Person {
+	int age;
+	char name[10];
+	void (*say)();
+} Person_class;
+Person_class person_class_new(int age, char name[10]);
+</pre>
+源文件person.c
+<pre>
+#include<stdio.h>
+#include "person.h"
+void person_class_say(){
+	printf("Hello,Struct");
+}
+Person_class person_class_new(int age,char name[10]){
+	Person_class p;
+	p.age=age;
+	strcpy(p.name,name);
+	p.say=person_class_say;
+	return p;
+}
+</pre>
+main函数
+<pre>
+#include<stdio.h>
+#include"person.h"
+int main() {
+	Person_class p=person_class_new(22,"HelloWorld");
+	p.say();
+	printf("\nObject person.name:%s",p.name);
+	return 1;
+}
+</pre>
+代码解读：头文件负责包装出一套语法像Java里的class 定义看齐。源文件
+负责构造出一套类似Java里new的语法，其中包括了对函数指针的赋值。
+如此一来，p被new出来的时候，简直就是和Java一样了。其实不然。
+我们试着让p的say方法输出自己的姓名和年龄吧。
+大写的尴尬立马就出来了。他妈的，p.say()方法里没办法获取p自己的name和age
+自己的方法，搞不来自己的属性。想要得到，就必须重新定义say方法，支持传入形参Person_class
+那样改造的话，就变成了p.say(p);这么诡异的代码，看了都觉得无语。这还不是因为C里面没有this？
+我们若非要打面向对象的套路，那么必然很难受。
+无论如何，C里面的方法和"对象"都是严重松耦合的。C崇尚依然是type，管他方法，变量，接口体，都是再
+玩type。
+
+
+
+
