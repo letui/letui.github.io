@@ -28,10 +28,10 @@ System.out.println(this.name+"-"+this.age);<br>
 代码如下<br>
 头文件person.h<br>
 <pre>
-#ifndef PERSON_H_
-#define PERSON_H_
+井ifndef PERSON_H_
+井define PERSON_H_
 
-#endif /* PERSON_H_ */
+井endif /* PERSON_H_ */
 typedef struct Person {
 	int age;
 	char name[10];
@@ -41,8 +41,8 @@ Person_class person_class_new(int age, char name[10]);
 </pre>
 源文件person.c
 <pre>
-#include<stdio.h>
-#include "person.h"
+井include<stdio.h>
+井include "person.h"
 void person_class_say(){
 	printf("Hello,Struct");
 }
@@ -56,8 +56,8 @@ Person_class person_class_new(int age,char name[10]){
 </pre>
 main函数
 <pre>
-#include<stdio.h>
-#include"person.h"
+井include<stdio.h>
+井include"person.h"
 int main() {
 	Person_class p=person_class_new(22,"HelloWorld");
 	p.say();
