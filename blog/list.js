@@ -1,7 +1,7 @@
 var $blog={
 total:1,
 last:12,
-size:9,
+size:12,
 count:0
 }
 function initBlogList(size){
