@@ -1,0 +1,68 @@
+Java队列的那些事儿之DelayQueue
+#
+编程语言
+#
+<strong>2018-10-16</strong><br>
+队列是个高级玩意儿?<br>
+准确的说消息队列是高级玩意儿，你看老牌儿ActiveMq,经久不衰。虽然现在都谈分布式了，<br>
+出来了个RocketMQ。其实，不就是分布式+Socket领域里的组播和点对点单播+Java的队列么。<br>
+噢，对当然还有一层协议和会话的控制。敢这么说，不是自己妄自菲薄狂妄自大。<br>
+只是，当对其思想理解后，便不觉得有多么高大。<br>
+老规矩，上代码
+主函数
+<pre>
+	static DelayQueue<DelayOrder> list=new DelayQueue<>();
+	public static void main(String[] args) {
+		System.out.println(System.currentTimeMillis());
+		list.add(new DelayOrder());
+		
+		try {
+			list.take();
+			System.out.println(System.currentTimeMillis());
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+</pre>
+分割线,上DelayOrder，即队列里存储的对象
+<hr>
+<pre>
+public class DelayOrder implements Delayed {
+	private long ctime;
+	public DelayOrder() {
+		ctime=System.currentTimeMillis();
+	}
+	@Override
+	public int compareTo(Delayed o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public long getDelay(TimeUnit unit) {
+		//System.out.println(System.currentTimeMillis()+"---");
+		return ctime+1000*3-System.currentTimeMillis();
+	}
+}
+</pre>
+分割线，开始废话
+<hr>
+阻塞和延迟，啥叫阻塞，说白了就卡住，啥叫延迟，即可预期的延后。<br>
+你开车到十字路口，等绿灯，叫延迟。但是，你开车到路口，遇上交警了，还把人家给轻微撞了。<br>
+这叫阻塞，啥时候放你走，全看交警心情。<br>
+在Java编程时，如果需要延迟，那么首先想到的是Thread.sleep(X*1000);<br>
+需要阻塞?while(true){ if(getOK()){break;}} 这叫阻塞。<br>
+<br>
+我用一下DelayQueue，实现一个三秒后取出处理。打印了下时间戳，还真是分毫不差3秒。<br>
+实在惊着我了。这里边儿肯定有意思了。<br>
+因为DelayQueue的队列的take方法是阻塞的，并且能够take到的唯一条件就是内部元素的 getDelay方法返回0或负数。<br>
+于是，为了搞清这分毫不差，我就在getDelay里边加了行输出时间戳的代码。<br>
+再次执行后，直接懵逼了，输出的速度真快啊，刷刷刷得走。<br>
+心中开始有些眉目，这玩意儿铁定用了循环。于是就开扒源码，看到了文章开篇的图片。<br>
+神奇的for(;;)一下子就让我释然了。。<br>
+为了达到精确的控制，真的是只有不间断执行 getDelay才行啊。要不然哪来的分毫不差？<br>
+<br>
+划重点：<br>
+如果真的需要阻塞，不考虑线程安全啥乱七八糟的，我还是认为一个ArrayList加上Thread.sleep(x*1000)包装出一套<br>
+API更合适些。<br>
+毕竟不间断的循环计算，还是相当浪费CPU的。毕竟，写代码还是走心比走肾好，珍爱CPU，因为CPU虽然傻，但是他不笨。<br>
+
