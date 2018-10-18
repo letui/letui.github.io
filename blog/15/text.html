@@ -1,0 +1,53 @@
+URL类在JAVA领域里的神奇
+#
+编程语言
+#
+文件读取，哪一门编程语言都不能少。<br>
+为了凑够140个字，我还是决定啰嗦下。<br>
+读取文件，这种麻烦事，一开始觉得很高大上。<br>
+毕竟嘛，很多高大上的应用都是建立在文件上，比如MYSQL，也是把数据存在了文件上。<br>
+嗯，文件是在磁盘上的。所以，MYSQL做的事情就是SQL解析，文件装载，内存检索。<br>
+如果有这么一个实现要求，需要你从jar包里读取一个文件，怎么办。<br>
+或者有个实现要求，需要你直接往ftp上创建文件，并写入怎么办。并不是，本地写，然后上传哦？<br>
+嗯，交给URL吧。这么牛逼，神奇的东西，你不试试？
+为了凑篇幅，我还是把代码贴进来把。
+<pre>
+package org.ws.boot;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+
+public class URLTool {
+
+	private String readFromUrl(String url) {
+		try {
+			byte[] temp;
+			InputStream input= new URL(url).openStream();
+			temp = new byte[input.available()];
+			input.read(temp);
+			return new String(temp);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public String readFromFilePath(String path) {
+		return readFromUrl("file:"+path);
+	}
+	public String readFromWebHost(String url) {
+		return readFromUrl("http://"+url);
+	}
+	public String readFromJarPath(String path) {
+		//Jar 内部路径表示法 !/xx/xx.txt
+		return readFromUrl("jar:file:"+path);
+	}
+	public String readFromJarWebHost(String path) {
+		//Jar 内部路径表示法 !/xx/xx.txt
+		return readFromUrl("jar:http://"+path);
+	}
+}
+
+</pre>
+逃跑式总结：灵活的运用URL反倒很方便，但是，切记，大文件算了。。
+jar:http://这种神奇的协议嵌套式读取，是不是很辣眼睛呢？嗯，辣。
