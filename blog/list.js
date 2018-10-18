@@ -2,13 +2,12 @@ var $blog={
 total:1,
 last:15,
 size:12,
-count:0
+count:1
 }
 function initBlogList(size){
-if(size)$blog.size=size;
-for(i=$blog.last;i>0;i--){
-				$blog.count++;
-				if($blog.count>$blog.size)break;
+	if(size)$blog.size=size;
+	for(i=$blog.last;i>$blog.last-$blog.size;i--){
+		console.log(i);
 				$.ajax({
 					url:"blog/"+i+"/"+"text.html?"+Math.random(),async:false,
 					success:function(html){
@@ -25,8 +24,8 @@ for(i=$blog.last;i>0;i--){
 						$("#tpl_blog_list").append(item);
 					}
 				});
-			}
-$(".item[tpl=blog]").remove();
+	}
+	$(".item[tpl=blog]").remove();
 }
 function initBlogPages(){
 	for(i=$blog.last;i>0;i--){
