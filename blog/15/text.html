@@ -26,6 +26,7 @@ public class URLTool {
 			InputStream input= new URL(url).openStream();
 			temp = new byte[input.available()];
 			input.read(temp);
+			input.close();
 			return new String(temp);
 		} catch (IOException e) {
 			e.printStackTrace();
