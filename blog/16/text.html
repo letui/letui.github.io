@@ -1,0 +1,73 @@
+解剖Smart-SQL(一)
+#
+编程语言
+#
+跟数据库打交道，Java领域里，早到jdbc-statement，后来<br>
+hibernate，再到mybatis，spring自带jdbcTemplate。<br>
+各自有各自的牛逼之处，但是却仍然有各自的局限性<br>
+hibernate意图发扬光大自己的HQL，可是呢?NOSQL的出现简直就是判了它的这种愚蠢想法的死刑<br>
+Oracle,SQL-Server日渐式微不得人心，Mysql虽被收编到Oracle，但是又搞出来个MariaDB私生子<br>
+总之，数据库领域太热闹了。可是最流行的最得人心却是MySQL<br>
+mybatis那一套往interface上捆绑，搞个动态代理去实现跟数据库的交互，到头来我还是觉得用起来太多限制<br>
+spring的jdbcTemplate，好嘛，自己搞RowMapper，还是啰嗦
+jpa那一套挺好，但是有意要把SQL屏蔽了。还是不爽。
+<pre>
+于是，我有了个大胆但不邪恶的想法。
+基本思路
+	1.注解和POJO绑定，关联到数据库表，列。
+	如:
+	@Table("person")
+	public class Person implements Serializable {
+
+	@Column("id")
+	private int id;
+
+	@Column("uname")
+	private String uname;
+
+	@Column("age")
+	private int age;
+
+	@Column("birth")
+	private Date birth;
+
+	}
+
+	按照以上关系可以想象出数据库表应该如下
+	CREATE TABLE `person` (
+  	`id` int(11) NOT NULL,
+  	`uname` varchar(45) DEFAULT NULL,
+  	`age` int(11) DEFAULT NULL,
+  	`birth` datetime DEFAULT NULL,
+  	PRIMARY KEY (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+	2.反射，泛型控制数据集和POJO的映射组装。
+
+	有点经验的人，肯定会设计出这样的API
+
+	public &lt;T> T selectObject(Class&lt;T> clazz)
+	然后通过扫描注解字段，执行SQL查询，将数据集和POJO字段进行绑定设置。
+
+	OK，到此文字，基本上形成了比较友好的API设计了。
+	下一步需要考虑的是SQL的关联，参数的关联，这必然涉及到SQL的的存储，加载。
+	按照易用易扩展，配置化要求，自然SQL语句应该放在外面以配置文件的形式存在。
+
+	3.于是，构思一个SQL文件的规范，按照我自己的想法 xxx.$为后缀。
+	每一个SQL都需要一个 ID，以便于使用。
+
+	#select
+	select * from person where id = ?
+
+	\\查询所有
+	#all
+	select * from person
+
+	如上所示,#表示一个ID的起始,后面的行自然是表示SQL语句了。为了更好的支持可读性把\\作为特殊符号
+	用来标记注释。
+
+	这样就形成了 method(SQL,Clazz,Params) 的实现要求
+
+
+</pre>
+逃跑式总结：下一篇再啰嗦下细节实现。大体思路已经总结完毕。
