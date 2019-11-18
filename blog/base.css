@@ -1,0 +1,236 @@
+@charset "utf-8";
+/* CSS Document */
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0;-webkit-text-size-adjust:100%;}
+body{background:#fff;-webkit-text-size-adjust:100%;}
+body,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-size:12px;font-family:'Microsoft Yahei', '微软雅黑', arial, \5b8b\4f53, Tahoma, Arial, Helvetica, STHeiti,'宋体';}
+li{list-style:none;}
+a,button, img, fieldset{text-decoration:none;bblr:expression(this.onFocus=this.blur());/*IE使用*/
+outline-style:none;/*FF使用*/}
+button, img, fieldset{border:none;}
+a{-webkit-user-drag:none;}
+a:hover{text-decoration:none;}
+th{font-weight:normal;}
+em,i{font-style:normal;}
+.fl{float:left;}
+.flr, .f_right{float:right;}
+.tal{text-align:left !important;}
+.pa{position:absolute;}
+.pre{position:relative;}
+.clear{clear:both;}
+.tnt{text-align:center;}
+.hideClass {display:none}
+.showclass  {display:inline}
+.cred{color:#f00;}
+.disabledClass{color:#ccc !important;}
+.pv_unable{cursor:not-allowed;}
+.ellipsis{text-overflow:ellipsis;white-space:nowrap; overflow:hidden;}
+.pv_more_select .chknumType li .hb_del,.pv_more_select .mselect i{background:url(//www.staticec.com/api/images/public/ec_bg_sprites.png) no-repeat;}
+.pv_more_select .chknumType li .hb_del:hover{background:url(//www.staticec.com/api/images/public/ec_bg_sprites.png) no-repeat -19px 0 !important;}
+
+/* Module & padding & width style */
+.pl_5{padding-left:5px;}.pl_10{padding-left:10px;}.pl_20{padding-left:20px;}.pl_30{padding-left:30px;}
+.pr_5{padding-right:5px;}.pr_10{padding-right:10px;}.pr_20{padding-right:20px;}.pr_30{padding-right:30px;}
+.pt_5{padding-top:5px;}.pt_10{padding-top:10px;}.pt_20{padding-top:20px;}.pt_30{padding-top:30px;}
+.pb_5{padding-bottom:5px;}.pb_10{padding-bottom:10px;}.pb_20{padding-bottom:20px;}.pb_30{padding-bottom:30px;}
+.ml_5{margin-left:5px;}.ml_10{margin-left:10px;}.ml_20{margin-left:20px;}.ml_30{margin-left:30px;}.ml_40{margin-left:40px;}
+.mr_5{margin-right:5px;}.mr_10{margin-right:10px;}.mr_20{margin-right:20px;}.mr_30{margin-right:30px;}
+.mb_5{margin-bottom:5px;}.mb_10{margin-bottom:10px;}.mb_20{margin-bottom:20px;}.mb_30{margin-bottom:30px;}
+.mt_5{margin-top:5px;}.mt_10{margin-top:10px;}.mt_15{margin-top:15px;}.mt_20{margin-top:20px;}.mt_30{margin-top:30px;}
+
+/*复写表单样式*/
+.a_ipt,.a_area,.a_select,.a_area,.ec_select{border:1px solid #c6dae5;border-radius:3px;padding:2px 4px;outline:0;}
+.a_ipt,.a_select,.ec_select{height:24px;}
+.a_area{resize: none;}
+.a_ipt:focus,.a_area:focus,.a_area:hover,.a_select:focus,.ec_select:focus{border:1px solid #0dc88c;}
+.a_area{resize: none;width:100%;}
+.a_select,.ec_select{background:#fff url(/my/images/content/arrow_down.png) no-repeat 95% center;-webkit-appearance:none;line-height:normal !important;}
+
+/*公共按钮*/
+.ec_btn,.ec_cancel{display:inline-block;*display:inline;*zoom:1;padding:2px 10px;border-radius:2px;}
+.ec_btn{background:#4d9dcf;border:1px solid #56a4d5;color:#fff;}
+.ec_cancel{background:-webkit-linear-gradient(top,#fefefe,#f0f0f0);border:1px solid #d4d4d4;color:#000;}
+
+/*清除浮动*/
+.ohid{overflow:hidden;}
+
+/*表格*/
+.tab{ border-collapse:collapse;width:100%;margin:10px 0;}
+.tab,.tab tr td,.tab tr th{border:1px solid #d8d8d8;}
+.tab tr td,.tab tr th{padding: 6px 8px 6px 15px;word-wrap:break-word; word-break:break-all;/* text-align:center; */}
+.tab tr th{height:auto !important;text-align:center;font-weight:normal;}
+
+/*标签-多选*/
+.pv_more_select .chknumType{margin:0 50px 0 0;float:none;overflow:hidden;}
+.pv_more_select .chknumType li{height:25px;}
+.pv_more_select .chknumType li a:hover{background:#229be6;color:#fff !important;border-radius: 2px;}
+.pv_more_select .mselect{width:48px;text-align:center;border-radius:0;padding:0;margin:2px 0;}
+.pv_more_select .mselect span{float:none;color:#333;}
+.pv_more_select .mselect i{display:inline-block;*display:inline;*zoom:1;width:8px;height:8px;background-position:-74px 0;margin:0 2px 0 0;}
+.pv_more_select .pv_btn{text-align:center;padding:0;}
+.pv_more_select .pv_btn .btn{width:70px;margin:4px 10px;padding:4px 10px;color:#333;}
+.pv_more_select .pv_btn .btn-primary{color:#fff;}
+.pv_more_select .chknumType li .hb_del,.pv_more_select .chknumType li .hb_del:hover{display:inline-block;*display:inline;*zoom:1;width:8px;height:8px;background-position:-19px 0;padding:0 6px!important;margin: 0 1px 0 -8px;}
+
+/*提示语*/
+.date_tips{position:absolute;width:200px;background:#fffbcb;border:1px solid #ffe698;padding:0 10px;display:none;z-index:10;font-size:12px;font-weight:normal;color:#333;}
+
+/*公用提示语*/
+.ec_tips{background:#fffbcb;border:1px solid #ffe698;padding:2px 10px;}
+.ec_tips span{background:url(/api/images/correct_icon.gif) no-repeat left center;padding:0 0 0 20px;}
+.ec_fail_tips span{background:url(/api/images/err_icon.gif) no-repeat left center;}
+
+/*提示信息*/
+.ts_info{width:200px;padding:2px 10px;margin:0px auto;display:block;z-index:12;}
+.fail_info,.succ_info{border:1px solid #ffba43;background:#ffffce;}
+.fail_info span,.succ_info span,.loading span{display:inline-block;padding:0px 0px 0px 20px;}
+.succ_info span{background:url(/api/images/correct_icon.gif) no-repeat left top;}
+.fail_info span{background:url(/api/images/err_icon.gif) no-repeat left top;}
+.loading span{background:url(/api/images/loading.gif) no-repeat left center !important;}
+
+/*暂无数据*/
+.ec_no_data{background:url(/api/images/public/zwsj.png) no-repeat;width:98px;height:28px;margin:0 auto;}
+
+/*数据加载中*/
+.ploading{top:50%;left:50%;margin:-15px 0 0 -70px;width:140px;line-height:30px;text-align:center;background:#f2f2f2;z-index:21;}
+.ploading span{background:url(//www.staticec.com/api/images/loading.gif) no-repeat left center;padding:0 0 0 20px;height:30px;line-height:30px;}
+
+/*分页——统一*/
+.page_jump{float:right;margin:2px 0 2px 20px;}
+.page_all{float:right;padding:2px 10px;}
+#pager, #pageinfo {clear:both;_height:1%;float:right;}
+#pager a {display:block;float:left;margin:0 2px;padding:1px 6px;border:1px solid #d8d8d8;color:#333;}
+#pager a:hover {color:#333;text-decoration:none;background:#f3f3f3;cursor: pointer;}
+#pager a.curr, #pager a.page_one {font-weight:bold;color:#333;background:#f3f3f3;border:1px solid #e0e0e0 !important;}
+.jumproutine{display:none;background:#FFF;border:1px solid #999;border-radius:5px;padding:10px;width:150px;position:absolute;right:20%;margin-top:-80px;text-align:left;}
+.jumproutine input{width:20px;margin:0px 3px 0px 3px;}
+.btn_search, .btn_sure{float:right;margin:2px 0;}
+
+/*自定义下拉框*/
+.ec_public_select{width:210px;}
+.ec_public_select .ec_p{height:22px;border:1px solid #c6dae5;background:#fff url(/my/images/content/arrow_down.png) no-repeat 95% center;line-height:22px;border-radius:3px;padding:2px 10px;top:0px;color:#000;}
+.ec_public_select .ec_p,.ec_public_select .ec_p_ul{left:0px;right:0px;}
+.ec_public_select .ec_p_active{border:1px solid #38f;}
+.ec_public_select .ec_p_ul{background:#fff;border:1px solid #c6dae5;border-top:0;border-radius:3px;max-height:120px;overflow-y:auto;top:28px;}
+.ec_public_select .ec_p_ul li{line-height:2;height:auto;padding:2px 10px;overflow:hidden;}
+.ec_public_select .ec_p_ul li:hover{background:#1e90ff;}
+.ec_public_select .ec_p_ul li:hover a{color:#fff;}
+.ec_public_select .ec_p_ul li img{width:18px;height:18px;float:left;margin:2px 4px 2px 0;border-radius:3px;border:1px solid #ddd;}
+.ec_public_select .ec_p_ul li a{color:#333;display:block;}
+.ec_public_select .ec_p_ul li a:hover{text-decoration:none;}
+
+/* 滚动条 scrollbar */
+::-webkit-scrollbar {
+     width: 6px;
+     height:6px;
+}
+
+/* Turn on single button up on top, and down on bottom */
+::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment {
+ display: block;
+}
+
+/* Turn off the down area up on top, and up area on bottom */
+::-webkit-scrollbar-button:vertical:start:increment, ::-webkit-scrollbar-button:vertical:end:decrement {
+ display: none;
+}
+
+::-webkit-scrollbar-button:vertical:end:increment,
+::-webkit-scrollbar-button:vertical:start:decrement,
+::-webkit-scrollbar-button:horizontal:end:decrement,
+::-webkit-scrollbar-button:horizontal:end:increment,
+::-webkit-scrollbar-button:horizontal:start:decrement{
+    background:url(//www.staticec.com/api/images/scrollbar/scroll.png) no-repeat;
+}
+
+/*竖向滚动条-下方按钮*/
+::-webkit-scrollbar-button:vertical:end:increment {
+    width:6px;
+    height:6px;
+    background-position:-2px -10px;
+}
+/*竖向滚动条-下方按钮-悬浮样式*/
+::-webkit-scrollbar-button:vertical:end:hover {
+    background-position:-1px 0px;
+}
+
+/*竖向滚动条-上方按钮*/
+::-webkit-scrollbar-button:vertical:start:decrement {
+    background-position:-12px -12px;
+    height:6px;
+    width:6px;
+}
+
+/*竖向滚动条-上方按钮-悬浮样式*/
+::-webkit-scrollbar-button:vertical:start:hover {
+    background-position:-12px -2px;
+}
+
+/*竖向滚动条顶部背景 */
+::-webkit-scrollbar-track-piece:vertical:start {
+    background:#fff;
+}
+
+/* 竖向滚动条底部背景 */
+::-webkit-scrollbar-track-piece:vertical:end {
+    background:#fff;
+}
+
+/* 竖向滚动条*/
+::-webkit-scrollbar-thumb:vertical {
+    background:#ccd5d9;
+    border-radius:4px;
+}
+/* 竖向滚动条-悬浮样式*/
+::-webkit-scrollbar-thumb:vertical:hover {
+    background:#a7d9f8;
+}
+
+
+/* Place The scroll down button at the bottom */
+::-webkit-scrollbar-button:horizontal:end:decrement {
+    background-position:-30px -11px;
+    height:6px;
+}
+::-webkit-scrollbar-button:horizontal:end:hover{
+    background-position:-30px -1px;
+}
+
+/*横向滚动条-右边按钮 */
+::-webkit-scrollbar-button:horizontal:end:increment {
+    background-position:-31px -11px;
+    height:6px;
+    width:6px;
+}
+
+/*横向滚动条-左边边按钮*/
+::-webkit-scrollbar-button:horizontal:start:decrement {
+    background-position:-23px -11px;
+    width:6px;
+}
+/*横向滚动条-左边边按钮-悬浮样式*/
+::-webkit-scrollbar-button:horizontal:start:hover {
+    background-position:-23px -1px;
+}
+
+/* 横向滚动条背景-左边背景 */
+::-webkit-scrollbar-track-piece:horizontal:start {
+    background:#fff;
+}
+
+/* 横向滚动条背景-右边背景 */
+::-webkit-scrollbar-track-piece:horizontal:end {
+    background:#fff;
+}
+
+/* The thumb itself */
+::-webkit-scrollbar-thumb:horizontal {
+    background:#ccd5d9;
+    border-radius:4px;
+}
+
+::-webkit-scrollbar-thumb:horizontal:hover {
+    background:#a7d9f8;
+}
+
+/*服务器维护页面*/
+.server_upkeep{padding-top:230px;color:#4c4c4c;font-size:18px;text-align:center;background:url("//www.staticec.com/api/images/logo_cry.png") top center no-repeat;position:absolute;left:0;right:0;top:50%;margin-top:-200px;}
