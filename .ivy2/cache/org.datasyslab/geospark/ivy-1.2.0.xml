@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven" xmlns:e="http://ant.apache.org/ivy/extra">
+	<info organisation="org.datasyslab"
+		module="geospark"
+		revision="1.2.0"
+		status="release"
+		publication="20190304171235"
+	>
+		<license name="MIT license" url="https://opensource.org/licenses/MIT" />
+		<description homepage="http://geospark.datasyslab.org/">
+		Geospatial extension for Apache Spark
+		</description>
+		<m:properties__spark.version>2.3.0</m:properties__spark.version>
+		<m:properties__geotools.version>17.0</m:properties__geotools.version>
+		<m:properties__scala.compat.version>2.11</m:properties__scala.compat.version>
+		<e:sbtTransformHash>c9eb1cd875385fc17cd446f6644924be9b96bf50</e:sbtTransformHash>
+		<m:properties__project.build.sourceEncoding>UTF-8</m:properties__project.build.sourceEncoding>
+		<m:properties__scala.version>2.11.8</m:properties__scala.version>
+		<m:maven.plugins>net.alchim31.maven__scala-maven-plugin__3.2.1|org.apache.maven.plugins__maven-compiler-plugin__null|org.apache.maven.plugins__maven-shade-plugin__2.1|org.apache.maven.plugins__maven-surefire-plugin__2.18.1|org.scalatest__scalatest-maven-plugin__1.0|net.alchim31.maven__scala-maven-plugin__3.2.1|org.apache.maven.plugins__maven-compiler-plugin__null|org.apache.maven.plugins__maven-shade-plugin__2.1|org.apache.maven.plugins__maven-surefire-plugin__2.18.1|org.scalatest__scalatest-maven-plugin__1.0|null__maven-compiler-plugin__null</m:maven.plugins>
+	</info>
+	<configurations>
+		<conf name="default" visibility="public" description="runtime dependencies and master artifact can be used with this conf" extends="runtime,master"/>
+		<conf name="master" visibility="public" description="contains only the artifact published by this module itself, with no transitive dependencies"/>
+		<conf name="compile" visibility="public" description="this is the default scope, used if none is specified. Compile dependencies are available in all classpaths."/>
+		<conf name="provided" visibility="public" description="this is much like compile, but indicates you expect the JDK or a container to provide it. It is only available on the compilation classpath, and is not transitive."/>
+		<conf name="runtime" visibility="public" description="this scope indicates that the dependency is not required for compilation, but is for execution. It is in the runtime and test classpaths, but not the compile classpath." extends="compile"/>
+		<conf name="test" visibility="private" description="this scope indicates that the dependency is not required for normal use of the application, and is only available for the test compilation and execution phases." extends="runtime"/>
+		<conf name="system" visibility="public" description="this scope is similar to provided except that you have to provide the JAR which contains it explicitly. The artifact is always available and is not looked up in a repository."/>
+		<conf name="sources" visibility="public" description="this configuration contains the source artifact of this module, if any."/>
+		<conf name="javadoc" visibility="public" description="this configuration contains the javadoc artifact of this module, if any."/>
+		<conf name="optional" visibility="public" description="contains all optional dependencies"/>
+	</configurations>
+	<publications>
+		<artifact name="geospark" type="jar" ext="jar" conf="master"/>
+	</publications>
+	<dependencies>
+		<dependency org="org.datasyslab" name="sernetcdf" rev="0.1.0" force="true" conf="provided->compile(*),provided(*),runtime(*),master(compile)"/>
+		<dependency org="org.apache.hadoop" name="hadoop-minicluster" rev="2.7.2" force="true" conf="test->runtime(*),master(compile)">
+			<exclude org="org.apache.hadoop" module="hadoop-common" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.hadoop" module="hadoop-hdfs" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.hadoop" module="hadoop-yarn-server-tests" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.hadoop" module="hadoop-mapreduce-client-jobclient" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.hadoop" module="hadoop-mapreduce-client-app" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.hadoop" module="hadoop-yarn-api" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.hadoop" module="hadoop-mapreduce-client-hs" name="*" type="*" ext="*" conf="" matcher="exact"/>
+		</dependency>
+		<dependency org="org.apache.spark" name="spark-core_2.11" rev="2.3.0" force="true" conf="provided->compile(*),provided(*),runtime(*),master(compile)">
+			<exclude org="org.apache.hadoop" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.avro" module="avro" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.avro" module="avro-mapred" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="com.twitter" module="chill_2.11" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="com.twitter" module="chill-java" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.xbean" module="xbean-asm5-shaded" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.spark" module="spark-launcher_2.11" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.spark" module="spark-kvstore_2.11" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.spark" module="spark-network-common_2.11" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.spark" module="spark-network-shuffle_2.11" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.spark" module="spark-unsafe_2.11" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="net.java.dev.jets3t" module="jets3t" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.curator" module="curator-recipes" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="javax.servlet" module="javax.servlet-api" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.commons" module="commons-lang3" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.commons" module="commons-math3" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="com.google.code.findbugs" module="jsr305" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.slf4j" module="slf4j-api" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.slf4j" module="jul-to-slf4j" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.slf4j" module="jcl-over-slf4j" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="log4j" module="log4j" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.slf4j" module="slf4j-log4j12" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="com.ning" module="compress-lzf" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.xerial.snappy" module="snappy-java" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.lz4" module="lz4-java" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="com.github.luben" module="zstd-jni" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.roaringbitmap" module="RoaringBitmap" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="commons-net" module="commons-net" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.scala-lang" module="scala-library" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.json4s" module="json4s-jackson_2.11" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.glassfish.jersey.core" module="jersey-client" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.glassfish.jersey.core" module="jersey-common" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.glassfish.jersey.core" module="jersey-server" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.glassfish.jersey.containers" module="jersey-container-servlet" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.glassfish.jersey.containers" module="jersey-container-servlet-core" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="io.netty" module="netty-all" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="io.netty" module="netty" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="com.clearspring.analytics" module="stream" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="io.dropwizard.metrics" module="metrics-core" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="io.dropwizard.metrics" module="metrics-jvm" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="io.dropwizard.metrics" module="metrics-json" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="io.dropwizard.metrics" module="metrics-graphite" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="com.fasterxml.jackson.core" module="jackson-databind" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="com.fasterxml.jackson.module" module="jackson-module-scala_2.11" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.ivy" module="ivy" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="oro" module="oro" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="net.razorvine" module="pyrolite" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="net.sf.py4j" module="py4j" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.spark" module="spark-tags_2.11" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.commons" module="commons-crypto" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.spark-project.spark" module="unused" name="*" type="*" ext="*" conf="" matcher="exact"/>
+		</dependency>
+		<dependency org="org.apache.hadoop" name="hadoop-mapreduce-client-core" rev="2.7.2" force="true" conf="provided->compile(*),provided(*),runtime(*),master(compile)">
+			<exclude org="org.apache.hadoop" module="hadoop-yarn-common" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="com.google.protobuf" module="protobuf-java" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.hadoop" module="hadoop-annotations" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="com.google.inject.extensions" module="guice-servlet" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.avro" module="avro" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.slf4j" module="slf4j-api" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.slf4j" module="slf4j-log4j12" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="io.netty" module="netty" name="*" type="*" ext="*" conf="" matcher="exact"/>
+		</dependency>
+		<dependency org="org.apache.hadoop" name="hadoop-common" rev="2.7.2" force="true" conf="provided->compile(*),provided(*),runtime(*),master(compile)">
+			<exclude org="com.google.guava" module="guava" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="commons-cli" module="commons-cli" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="xmlenc" module="xmlenc" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="commons-httpclient" module="commons-httpclient" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="commons-io" module="commons-io" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="commons-collections" module="commons-collections" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="javax.servlet" module="servlet-api" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.mortbay.jetty" module="jetty" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.mortbay.jetty" module="jetty-util" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="javax.servlet.jsp" module="jsp-api" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="com.sun.jersey" module="jersey-core" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="com.sun.jersey" module="jersey-json" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="com.sun.jersey" module="jersey-server" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="commons-logging" module="commons-logging" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="commons-lang" module="commons-lang" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="commons-configuration" module="commons-configuration" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.codehaus.jackson" module="jackson-core-asl" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.codehaus.jackson" module="jackson-mapper-asl" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="com.google.code.gson" module="gson" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.hadoop" module="hadoop-auth" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="com.jcraft" module="jsch" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.curator" module="curator-client" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.htrace" module="htrace-core" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.zookeeper" module="zookeeper" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.commons" module="commons-compress" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.hadoop" module="hadoop-annotations" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.commons" module="commons-math3" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="commons-codec" module="commons-codec" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="commons-net" module="commons-net" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="log4j" module="log4j" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="net.java.dev.jets3t" module="jets3t" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="com.google.protobuf" module="protobuf-java" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.curator" module="curator-recipes" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="com.google.code.findbugs" module="jsr305" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.slf4j" module="slf4j-api" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.slf4j" module="slf4j-log4j12" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.apache.avro" module="avro" name="*" type="*" ext="*" conf="" matcher="exact"/>
+		</dependency>
+		<dependency org="junit" name="junit" rev="4.12" force="true" conf="test->runtime(*),master(compile)">
+			<exclude org="org.hamcrest" module="hamcrest-core" name="*" type="*" ext="*" conf="" matcher="exact"/>
+		</dependency>
+		<dependency org="org.scalatest" name="scalatest_2.11" rev="2.2.4" force="true" conf="test->runtime(*),master(compile)">
+			<exclude org="org.scala-lang" module="scala-reflect" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.scala-lang.modules" module="scala-xml_2.11" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.scala-lang" module="scala-library" name="*" type="*" ext="*" conf="" matcher="exact"/>
+		</dependency>
+	</dependencies>
+</ivy-module>

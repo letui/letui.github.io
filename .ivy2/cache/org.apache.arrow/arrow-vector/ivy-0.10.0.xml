@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven" xmlns:e="http://ant.apache.org/ivy/extra">
+	<info organisation="org.apache.arrow"
+		module="arrow-vector"
+		revision="0.10.0"
+		status="release"
+		publication="20180803080718"
+	>
+		<license name="Apache License, Version 2.0" url="https://www.apache.org/licenses/LICENSE-2.0.txt" />
+		<description homepage="" />
+		<m:properties__dep.hadoop.version>2.7.1</m:properties__dep.hadoop.version>
+		<m:properties__organization.logo>https://www.apache.org/images/asf_logo_wide.gif</m:properties__organization.logo>
+		<m:dependency.management__com.fasterxml.jackson.core__jackson-databind__version>2.7.9</m:dependency.management__com.fasterxml.jackson.core__jackson-databind__version>
+		<m:properties__dep.junit.version>4.11</m:properties__dep.junit.version>
+		<m:properties__fbs.version>1.2.0-3f79e055</m:properties__fbs.version>
+		<m:dependency.management__io.netty__netty-handler__version>4.1.17.Final</m:dependency.management__io.netty__netty-handler__version>
+		<m:properties__forkCount>2</m:properties__forkCount>
+		<m:dependency.management__com.vlkan__flatbuffers__version>1.2.0-3f79e055</m:dependency.management__com.vlkan__flatbuffers__version>
+		<m:properties__dep.guava.version>18.0</m:properties__dep.guava.version>
+		<e:sbtTransformHash>bd391515127f8823d3da512d0eb0ea2a406f5bd6</e:sbtTransformHash>
+		<m:properties__maven.compiler.target>1.6</m:properties__maven.compiler.target>
+		<m:dependency.management__io.netty__netty-common__version>4.1.17.Final</m:dependency.management__io.netty__netty-common__version>
+		<m:maven.plugins>org.apache.maven.plugins__maven-remote-resources-plugin__null|org.apache.maven.plugins__maven-site-plugin__null|org.apache.maven.plugins__maven-remote-resources-plugin__null|org.apache.maven.plugins__maven-site-plugin__null|org.apache.rat__apache-rat-plugin__null|org.apache.maven.plugins__maven-jar-plugin__null|org.apache.maven.plugins__maven-resources-plugin__null|org.apache.maven.plugins__maven-compiler-plugin__null|null__maven-enforcer-plugin__null|pl.project13.maven__git-commit-id-plugin__2.2.2|org.apache.maven.plugins__maven-checkstyle-plugin__2.17|org.apache.maven.plugins__maven-dependency-plugin__null|org.apache.maven.plugins__maven-remote-resources-plugin__null|org.apache.maven.plugins__maven-site-plugin__null|org.apache.maven.plugins__maven-remote-resources-plugin__null|org.apache.maven.plugins__maven-site-plugin__null|org.apache.rat__apache-rat-plugin__null|org.apache.maven.plugins__maven-jar-plugin__null|org.apache.maven.plugins__maven-resources-plugin__null|org.apache.maven.plugins__maven-compiler-plugin__null|null__maven-enforcer-plugin__null|pl.project13.maven__git-commit-id-plugin__2.2.2|org.apache.maven.plugins__maven-checkstyle-plugin__2.17|org.apache.maven.plugins__maven-dependency-plugin__null|null__maven-resources-plugin__null|org.apache.drill.tools__drill-fmpp-maven-plugin__1.5.0</m:maven.plugins>
+		<m:dependency.management__org.slf4j__slf4j-api__version>1.7.25</m:dependency.management__org.slf4j__slf4j-api__version>
+		<m:properties__target.gen.source.path>${project.basedir}/target/generated-sources</m:properties__target.gen.source.path>
+		<m:properties__project.reporting.outputEncoding>UTF-8</m:properties__project.reporting.outputEncoding>
+		<m:properties__distMgmtSnapshotsUrl>https://repository.apache.org/content/repositories/snapshots</m:properties__distMgmtSnapshotsUrl>
+		<m:dependency.management__com.google.guava__guava__version>18.0</m:dependency.management__com.google.guava__guava__version>
+		<m:properties__dep.netty.version>4.1.17.Final</m:properties__dep.netty.version>
+		<m:properties__gpg.useagent>true</m:properties__gpg.useagent>
+		<m:dependency.management__io.netty__netty-buffer__version>4.1.17.Final</m:dependency.management__io.netty__netty-buffer__version>
+		<m:properties__dep.jackson.version>2.7.9</m:properties__dep.jackson.version>
+		<m:properties__project.build.sourceEncoding>UTF-8</m:properties__project.build.sourceEncoding>
+		<m:properties__surefire.version>2.19.1</m:properties__surefire.version>
+		<m:properties__checkstyle.failOnViolation>false</m:properties__checkstyle.failOnViolation>
+		<m:properties__distMgmtSnapshotsName>Apache Development Snapshot Repository</m:properties__distMgmtSnapshotsName>
+		<m:properties__sourceReleaseAssemblyDescriptor>source-release</m:properties__sourceReleaseAssemblyDescriptor>
+		<m:dependency.management__com.fasterxml.jackson.core__jackson-annotations__version>2.7.9</m:dependency.management__com.fasterxml.jackson.core__jackson-annotations__version>
+		<m:properties__dep.slf4j.version>1.7.25</m:properties__dep.slf4j.version>
+		<m:dependency.management__com.fasterxml.jackson.core__jackson-core__version>2.7.9</m:dependency.management__com.fasterxml.jackson.core__jackson-core__version>
+		<m:dependency.management__com.google.code.findbugs__jsr305__version>3.0.2</m:dependency.management__com.google.code.findbugs__jsr305__version>
+		<m:properties__maven.compiler.source>1.6</m:properties__maven.compiler.source>
+	</info>
+	<configurations>
+		<conf name="default" visibility="public" description="runtime dependencies and master artifact can be used with this conf" extends="runtime,master"/>
+		<conf name="master" visibility="public" description="contains only the artifact published by this module itself, with no transitive dependencies"/>
+		<conf name="compile" visibility="public" description="this is the default scope, used if none is specified. Compile dependencies are available in all classpaths."/>
+		<conf name="provided" visibility="public" description="this is much like compile, but indicates you expect the JDK or a container to provide it. It is only available on the compilation classpath, and is not transitive."/>
+		<conf name="runtime" visibility="public" description="this scope indicates that the dependency is not required for compilation, but is for execution. It is in the runtime and test classpaths, but not the compile classpath." extends="compile"/>
+		<conf name="test" visibility="private" description="this scope indicates that the dependency is not required for normal use of the application, and is only available for the test compilation and execution phases." extends="runtime"/>
+		<conf name="system" visibility="public" description="this scope is similar to provided except that you have to provide the JAR which contains it explicitly. The artifact is always available and is not looked up in a repository."/>
+		<conf name="sources" visibility="public" description="this configuration contains the source artifact of this module, if any."/>
+		<conf name="javadoc" visibility="public" description="this configuration contains the javadoc artifact of this module, if any."/>
+		<conf name="optional" visibility="public" description="contains all optional dependencies"/>
+	</configurations>
+	<publications>
+		<artifact name="arrow-vector" type="jar" ext="jar" conf="master"/>
+	</publications>
+	<dependencies>
+		<dependency org="org.apache.arrow" name="arrow-format" rev="0.10.0" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*)"/>
+		<dependency org="org.apache.arrow" name="arrow-memory" rev="0.10.0" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*)"/>
+		<dependency org="joda-time" name="joda-time" rev="2.9.9" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*)"/>
+		<dependency org="com.fasterxml.jackson.core" name="jackson-core" rev="2.7.9" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*)"/>
+		<dependency org="com.fasterxml.jackson.core" name="jackson-annotations" rev="2.7.9" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*)"/>
+		<dependency org="com.fasterxml.jackson.core" name="jackson-databind" rev="2.7.9" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*)"/>
+		<dependency org="com.carrotsearch" name="hppc" rev="0.7.2" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*)"/>
+		<dependency org="commons-codec" name="commons-codec" rev="1.10" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*)"/>
+		<dependency org="com.google.guava" name="guava" rev="18.0" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*)"/>
+		<dependency org="io.netty" name="netty-buffer" rev="4.1.17.Final" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*)"/>
+		<dependency org="io.netty" name="netty-common" rev="4.1.17.Final" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*)"/>
+		<dependency org="com.vlkan" name="flatbuffers" rev="1.2.0-3f79e055" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*)"/>
+		<dependency org="com.google.code.findbugs" name="jsr305" rev="3.0.2" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*)"/>
+		<dependency org="org.slf4j" name="slf4j-api" rev="1.7.25" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*)"/>
+		<dependency org="org.slf4j" name="jul-to-slf4j" rev="1.7.25" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="org.slf4j" name="jcl-over-slf4j" rev="1.7.25" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="org.slf4j" name="log4j-over-slf4j" rev="1.7.25" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="org.jmockit" name="jmockit" rev="1.33" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="junit" name="junit" rev="4.11" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="org.mockito" name="mockito-core" rev="2.7.22" force="true" conf="test->runtime(*),master(compile)">
+			<exclude org="org.hamcrest" module="hamcrest-core" name="*" type="*" ext="*" conf="" matcher="exact"/>
+		</dependency>
+		<dependency org="ch.qos.logback" name="logback-classic" rev="1.2.3" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="de.huxhorn.lilith" name="de.huxhorn.lilith.logback.appender.multiplex-classic" rev="0.9.44" force="true" conf="test->runtime(*),master(compile)"/>
+	</dependencies>
+</ivy-module>

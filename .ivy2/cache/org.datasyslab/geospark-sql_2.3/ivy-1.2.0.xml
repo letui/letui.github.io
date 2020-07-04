@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven" xmlns:e="http://ant.apache.org/ivy/extra">
+	<info organisation="org.datasyslab"
+		module="geospark-sql_2.3"
+		revision="1.2.0"
+		status="release"
+		publication="20190304171241"
+	>
+		<license name="MIT license" url="https://opensource.org/licenses/MIT" />
+		<description homepage="http://geospark.datasyslab.org/">
+		SQL Extension of GeoSpark
+		</description>
+		<m:properties__spark.version>2.3.0</m:properties__spark.version>
+		<m:properties__geotools.version>17.0</m:properties__geotools.version>
+		<m:properties__scala.compat.version>2.11</m:properties__scala.compat.version>
+		<e:sbtTransformHash>11a892d56a7905c3a152c83910b9ca2197a880d0</e:sbtTransformHash>
+		<m:properties__project.build.sourceEncoding>UTF-8</m:properties__project.build.sourceEncoding>
+		<m:properties__scala.version>2.11.8</m:properties__scala.version>
+		<m:maven.plugins>net.alchim31.maven__scala-maven-plugin__3.2.1|org.apache.maven.plugins__maven-compiler-plugin__null|org.apache.maven.plugins__maven-shade-plugin__2.1|org.apache.maven.plugins__maven-surefire-plugin__2.18.1|org.scalatest__scalatest-maven-plugin__1.0|net.alchim31.maven__scala-maven-plugin__3.2.1|org.apache.maven.plugins__maven-compiler-plugin__null|org.apache.maven.plugins__maven-shade-plugin__2.1|org.apache.maven.plugins__maven-surefire-plugin__2.18.1|org.scalatest__scalatest-maven-plugin__1.0|org.scalastyle__scalastyle-maven-plugin__1.0.0</m:maven.plugins>
+	</info>
+	<configurations>
+		<conf name="default" visibility="public" description="runtime dependencies and master artifact can be used with this conf" extends="runtime,master"/>
+		<conf name="master" visibility="public" description="contains only the artifact published by this module itself, with no transitive dependencies"/>
+		<conf name="compile" visibility="public" description="this is the default scope, used if none is specified. Compile dependencies are available in all classpaths."/>
+		<conf name="provided" visibility="public" description="this is much like compile, but indicates you expect the JDK or a container to provide it. It is only available on the compilation classpath, and is not transitive."/>
+		<conf name="runtime" visibility="public" description="this scope indicates that the dependency is not required for compilation, but is for execution. It is in the runtime and test classpaths, but not the compile classpath." extends="compile"/>
+		<conf name="test" visibility="private" description="this scope indicates that the dependency is not required for normal use of the application, and is only available for the test compilation and execution phases." extends="runtime"/>
+		<conf name="system" visibility="public" description="this scope is similar to provided except that you have to provide the JAR which contains it explicitly. The artifact is always available and is not looked up in a repository."/>
+		<conf name="sources" visibility="public" description="this configuration contains the source artifact of this module, if any."/>
+		<conf name="javadoc" visibility="public" description="this configuration contains the javadoc artifact of this module, if any."/>
+		<conf name="optional" visibility="public" description="contains all optional dependencies"/>
+	</configurations>
+	<publications>
+		<artifact name="geospark-sql_2.3" type="jar" ext="jar" conf="master"/>
+	</publications>
+	<dependencies>
+		<dependency org="org.datasyslab" name="geospark" rev="1.2.0" force="true" conf="provided->compile(*),provided(*),runtime(*),master(compile)"/>
+		<dependency org="org.apache.spark" name="spark-sql_2.11" rev="2.3.0" force="true" conf="provided->compile(*),provided(*),runtime(*),master(compile)"/>
+		<dependency org="org.apache.spark" name="spark-hive_2.11" rev="2.3.0" force="true" conf="provided->compile(*),provided(*),runtime(*),master(compile)"/>
+		<dependency org="org.apache.spark" name="spark-core_2.11" rev="2.3.0" force="true" conf="provided->compile(*),provided(*),runtime(*),master(compile)">
+			<exclude org="org.apache.hadoop" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>
+		</dependency>
+		<dependency org="org.apache.hadoop" name="hadoop-mapreduce-client-core" rev="2.7.2" force="true" conf="provided->compile(*),provided(*),runtime(*),master(compile)"/>
+		<dependency org="org.apache.hadoop" name="hadoop-common" rev="2.7.2" force="true" conf="provided->compile(*),provided(*),runtime(*),master(compile)"/>
+		<dependency org="junit" name="junit" rev="4.12" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="org.scalatest" name="scalatest_2.11" rev="2.2.4" force="true" conf="test->runtime(*),master(compile)"/>
+	</dependencies>
+</ivy-module>

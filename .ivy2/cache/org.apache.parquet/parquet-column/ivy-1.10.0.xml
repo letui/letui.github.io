@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven" xmlns:e="http://ant.apache.org/ivy/extra">
+	<info organisation="org.apache.parquet"
+		module="parquet-column"
+		revision="1.10.0"
+		status="release"
+		publication="20180406044051"
+	>
+		<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt" />
+		<description homepage="https://parquet.apache.org" />
+		<m:properties__commons-codec.version>1.10</m:properties__commons-codec.version>
+		<m:properties__organization.logo>http://www.apache.org/images/asf_logo_wide.gif</m:properties__organization.logo>
+		<m:properties__jcommander.version>1.35</m:properties__jcommander.version>
+		<m:properties__thrift.version>0.9.3</m:properties__thrift.version>
+		<m:properties__thrift.executable>thrift</m:properties__thrift.executable>
+		<m:properties__shade.prefix>shaded.parquet</m:properties__shade.prefix>
+		<m:properties__jackson.version>1.9.13</m:properties__jackson.version>
+		<m:properties__targetJavaVersion>1.8</m:properties__targetJavaVersion>
+		<m:properties__fastutil.version>7.0.13</m:properties__fastutil.version>
+		<m:properties__hadoop.version>2.7.3</m:properties__hadoop.version>
+		<m:properties__semver.api.version>0.9.33</m:properties__semver.api.version>
+		<e:sbtTransformHash>6eff27c3f3b02455abcdf6c1f5f5e38b8b8e7e9e</e:sbtTransformHash>
+		<m:properties__maven.compiler.target>${targetJavaVersion}</m:properties__maven.compiler.target>
+		<m:properties__guava.version>20.0</m:properties__guava.version>
+		<m:properties__github.global.server>github</m:properties__github.global.server>
+		<m:maven.plugins>org.apache.maven.plugins__maven-remote-resources-plugin__null|org.apache.maven.plugins__maven-remote-resources-plugin__null|com.mycila.maven-license-plugin__maven-license-plugin__1.10.b1|org.apache.maven.plugins__maven-resources-plugin__2.7|org.apache.maven.plugins__maven-remote-resources-plugin__1.5|org.apache.maven.plugins__maven-compiler-plugin__null|org.apache.maven.plugins__maven-failsafe-plugin__2.10|org.apache.maven.plugins__maven-surefire-plugin__2.10|org.codehaus.mojo__buildnumber-maven-plugin__1.1|org.apache.rat__apache-rat-plugin__0.12|org.apache.maven.plugins__maven-remote-resources-plugin__null|org.apache.maven.plugins__maven-remote-resources-plugin__null|com.mycila.maven-license-plugin__maven-license-plugin__1.10.b1|org.apache.maven.plugins__maven-resources-plugin__2.7|org.apache.maven.plugins__maven-remote-resources-plugin__1.5|org.apache.maven.plugins__maven-compiler-plugin__null|org.apache.maven.plugins__maven-failsafe-plugin__2.10|org.apache.maven.plugins__maven-surefire-plugin__2.10|org.codehaus.mojo__buildnumber-maven-plugin__1.1|org.apache.rat__apache-rat-plugin__0.12|null__maven-enforcer-plugin__null|null__maven-jar-plugin__null|null__maven-shade-plugin__null|org.codehaus.mojo__exec-maven-plugin__1.2.1</m:maven.plugins>
+		<m:properties__pig.version>0.16.0</m:properties__pig.version>
+		<m:properties__project.reporting.outputEncoding>UTF-8</m:properties__project.reporting.outputEncoding>
+		<m:properties__mockito.version>1.10.19</m:properties__mockito.version>
+		<m:properties__distMgmtSnapshotsUrl>https://repository.apache.org/content/repositories/snapshots</m:properties__distMgmtSnapshotsUrl>
+		<m:properties__scala.binary.version>2.10</m:properties__scala.binary.version>
+		<m:properties__pig.classifier>h2</m:properties__pig.classifier>
+		<m:properties__slf4j.version>1.7.22</m:properties__slf4j.version>
+		<m:properties__cascading3.version>3.1.2</m:properties__cascading3.version>
+		<m:properties__jackson.groupId>org.codehaus.jackson</m:properties__jackson.groupId>
+		<m:properties__jackson2.version>2.3.1</m:properties__jackson2.version>
+		<m:properties__avro.version>1.8.2</m:properties__avro.version>
+		<m:properties__opencsv.version>2.3</m:properties__opencsv.version>
+		<m:properties__gpg.useagent>true</m:properties__gpg.useagent>
+		<m:properties__parquet.format.version>2.4.0</m:properties__parquet.format.version>
+		<m:properties__project.build.sourceEncoding>UTF-8</m:properties__project.build.sourceEncoding>
+		<m:properties__scala.version>2.10.6</m:properties__scala.version>
+		<m:properties__previous.version>1.7.0</m:properties__previous.version>
+		<m:properties__brotli-codec.version>0.1.1</m:properties__brotli-codec.version>
+		<m:properties__distMgmtSnapshotsName>Apache Development Snapshot Repository</m:properties__distMgmtSnapshotsName>
+		<m:properties__maven-jar-plugin.version>2.4</m:properties__maven-jar-plugin.version>
+		<m:properties__jackson.package>org.codehaus.jackson</m:properties__jackson.package>
+		<m:properties__sourceReleaseAssemblyDescriptor>source-release</m:properties__sourceReleaseAssemblyDescriptor>
+		<m:properties__thrift-maven-plugin.version>0.10.0</m:properties__thrift-maven-plugin.version>
+		<m:properties__cascading.version>2.7.1</m:properties__cascading.version>
+		<m:properties__hadoop1.version>1.2.1</m:properties__hadoop1.version>
+		<m:properties__maven.compiler.source>1.8</m:properties__maven.compiler.source>
+		<m:properties__scala.maven.test.skip>false</m:properties__scala.maven.test.skip>
+	</info>
+	<configurations>
+		<conf name="default" visibility="public" description="runtime dependencies and master artifact can be used with this conf" extends="runtime,master"/>
+		<conf name="master" visibility="public" description="contains only the artifact published by this module itself, with no transitive dependencies"/>
+		<conf name="compile" visibility="public" description="this is the default scope, used if none is specified. Compile dependencies are available in all classpaths."/>
+		<conf name="provided" visibility="public" description="this is much like compile, but indicates you expect the JDK or a container to provide it. It is only available on the compilation classpath, and is not transitive."/>
+		<conf name="runtime" visibility="public" description="this scope indicates that the dependency is not required for compilation, but is for execution. It is in the runtime and test classpaths, but not the compile classpath." extends="compile"/>
+		<conf name="test" visibility="private" description="this scope indicates that the dependency is not required for normal use of the application, and is only available for the test compilation and execution phases." extends="runtime"/>
+		<conf name="system" visibility="public" description="this scope is similar to provided except that you have to provide the JAR which contains it explicitly. The artifact is always available and is not looked up in a repository."/>
+		<conf name="sources" visibility="public" description="this configuration contains the source artifact of this module, if any."/>
+		<conf name="javadoc" visibility="public" description="this configuration contains the javadoc artifact of this module, if any."/>
+		<conf name="optional" visibility="public" description="contains all optional dependencies"/>
+	</configurations>
+	<publications>
+		<artifact name="parquet-column" type="jar" ext="jar" conf="master"/>
+	</publications>
+	<dependencies>
+		<dependency org="org.apache.parquet" name="parquet-common" rev="1.10.0" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*)"/>
+		<dependency org="org.apache.parquet" name="parquet-encoding" rev="1.10.0" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*);test->runtime(*),master(compile)">
+			<artifact name="parquet-encoding" type="jar" ext="jar" conf="compile,runtime"/>
+			<artifact name="parquet-encoding" type="test-jar" ext="jar" conf="test" m:classifier="tests"/>
+		</dependency>
+		<dependency org="commons-codec" name="commons-codec" rev="1.10" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*)"/>
+		<dependency org="com.carrotsearch" name="junit-benchmarks" rev="0.7.2" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="com.h2database" name="h2" rev="1.4.193" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="org.slf4j" name="slf4j-simple" rev="1.7.22" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="org.mockito" name="mockito-all" rev="1.10.19" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="com.google.guava" name="guava" rev="20.0" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="junit" name="junit" rev="4.12" force="true" conf="test->runtime(*),master(compile)">
+			<exclude org="org.hamcrest" module="hamcrest-core" name="*" type="*" ext="*" conf="" matcher="exact"/>
+		</dependency>
+		<dependency org="org.easymock" name="easymock" rev="3.4" force="true" conf="test->runtime(*),master(compile)">
+			<exclude org="org.objenesis" module="objenesis" name="*" type="*" ext="*" conf="" matcher="exact"/>
+		</dependency>
+		<dependency org="commons-httpclient" name="commons-httpclient" rev="3.1" force="true" conf="test->runtime(*),master(compile)">
+			<exclude org="commons-logging" module="commons-logging" name="*" type="*" ext="*" conf="" matcher="exact"/>
+		</dependency>
+	</dependencies>
+</ivy-module>
